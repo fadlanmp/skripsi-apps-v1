@@ -51,12 +51,33 @@ class NilaiController extends Controller
      */
     public function create()
     {
-        return view('dashboard.nilais.create',[
-            'rumpuns' => Rumpun::all(),
-            'santris' => Santri::all(),
-            'ustads' => Ustad::all(),
-            'kitabs' => Kitab::all()
-        ]);
+        if(Gate::allows('admin'))
+        {
+            return view('dashboard.nilais.create',[
+                'rumpuns' => Rumpun::all(),
+                'santris' => Santri::all(),
+                'ustads' => Ustad::all(),
+                'kitabs' => Kitab::all()
+            ]);
+        }
+        
+        elseif(Gate::allows('ustad'))
+        {
+            return view('dashboard.nilais.create',[
+                'rumpuns' => Rumpun::all(),
+                'santris' => Santri::all(),
+                'ustads' => Ustad::where('user_id', auth()->user()->id)->pluck('name'),
+                'kitabs' => Kitab::all()
+            ]);
+        }
+        
+        else
+        {
+            return view('dashboard.nilais.index', [
+                $santri_id = Santri::where('user_id', auth()->user()->id)->pluck('id'),
+                'nilais' => Nilai::where('santri_id', $santri_id)->get()
+            ]);
+        }
     }
 
     /**

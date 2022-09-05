@@ -37,7 +37,7 @@
           <label for="ustad" class="form-label">Pengajar</label>
           <select class="form-select" name="ustad_id">
             @foreach ($ustads as $ustad)
-            @if (old('kitab_id') == $ustad->id)
+            @if (old('id') == $ustad->id)
             <option value="{{ $ustad->id }}" selected>{{ $ustad->name }}</option>
             @else
             <option value="{{ $ustad->id }}">{{ $ustad->name }}</option>
