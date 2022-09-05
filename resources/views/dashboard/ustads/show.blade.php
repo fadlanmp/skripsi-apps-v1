@@ -7,8 +7,10 @@
             <h2 class="mb-5">Profil Ustad</h2>
 
             <a href="/dashboard/ustads" class="btn btn-success mb-2"><span data-feather="arrow-left"></span> Kembali ke daftar ustad</a>
-            
+            @canany(['admin', 'ustad'])
+                
             <a href="/dashboard/password/{{ $ustad->user_id }}" class="btn btn-info mb-2"><span data-feather="edit"></span> Edit Password</a>
+            @endcanany
 
             @can('admin')
                 <a href="/dashboard/ustads/{{ $ustad->id }}/edit" class="btn btn-primary mb-2"><span data-feather="edit"></span> Edit Profil</a>
