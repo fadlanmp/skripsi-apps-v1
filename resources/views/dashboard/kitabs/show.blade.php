@@ -20,7 +20,7 @@
                 <div class="col-md-4">
                     @if ($kitabs->image)
                     <div style="max-height: 350px; overflow:hidden">
-                        <img src=" {{ asset('storage/' . $kitabs->image) }}" alt="{{ $kitabs->rumpun->name }}" class="img-fluid mt-3">
+                        <img src=" {{ asset('storage/' . $kitabs->image) }}" alt="{{ $kitabs->name }}" class="img-fluid mt-3">
                     </div>
                         
                     @else
