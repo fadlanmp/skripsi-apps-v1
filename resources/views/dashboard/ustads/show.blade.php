@@ -35,11 +35,14 @@
                     <th scope="row">:</th>
                     <td>{{ $ustad->name }}</td>
                 </tr>
+                @canany(['admin', 'ustad'])
+                    
                 <tr>
                     <th scope="row">Username</th>
                     <th scope="row">:</th>
                     <td>{{ $ustad->user->username }}</td>
                 </tr>
+                @endcanany
                 <tr>
                     <th scope="row">Jenis Kelamin</th>
                     <th scope="row">:</th>
