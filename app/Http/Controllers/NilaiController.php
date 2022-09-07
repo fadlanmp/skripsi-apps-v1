@@ -66,7 +66,8 @@ class NilaiController extends Controller
             return view('dashboard.nilais.create',[
                 'rumpuns' => Rumpun::all(),
                 'santris' => Santri::all(),
-                'ustads' => Ustad::where('user_id', auth()->user()->id)->pluck('id'),
+                'ustads' => Ustad::all(),
+                // 'ustads' => Ustad::where('user_id', auth()->user()->id)->pluck('id'),
                 'kitabs' => Kitab::all()
             ]);
         }

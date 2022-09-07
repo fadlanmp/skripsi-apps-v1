@@ -20,18 +20,33 @@
           </select>
         </div>
 
-        <div class="mb-3">
-          <label for="kitab" class="form-label">Nama Kitab</label>
-          <select class="form-select" name="kitab_id">
-            @foreach ($kitabs as $kitab)
-            @if (old('kitab_id') == $kitab->id)
-            <option value="{{ $kitab->id }}" selected>{{ $kitab->title }}</option>
-            @else
-            <option value="{{ $kitab->id }}">{{ $kitab->title }}</option>
-            @endif
-            @endforeach
-          </select>
-        </div>
+        @can('admin')
+          <div class="mb-3">
+            <label for="kitab" class="form-label">Nama Kitab</label>
+            <select class="form-select" name="kitab_id">
+              @foreach ($kitabs as $kitab)
+              @if (old('kitab_id') == $kitab->id)
+              <option value="{{ $kitab->id }}" selected>{{ $kitab->title }}</option>
+              @else
+              <option value="{{ $kitab->id }}">{{ $kitab->title }}</option>
+              @endif
+              @endforeach
+            </select>
+          </div>
+        @elsecan('ustad')
+          <div class="mb-3">
+            <label for="ustad" class="form-label">Pengajar</label>
+            <select class="form-select" name="ustad_id">
+              @foreach ($ustads as $ustad)
+              @if (old('ustad_id') == $ustad->ustad_id)
+              <option value="{{ $ustad->ustad_id }}" selected>{{ $ustad->name }}</option>
+              @else
+              <option value="{{ $ustad->ustad_id }}">{{ $ustad->name }}</option>
+              @endif
+              @endforeach
+            </select>
+          </div>            
+        @endcan
 
         <div class="mb-3">
           <label for="ustad" class="form-label">Pengajar</label>
