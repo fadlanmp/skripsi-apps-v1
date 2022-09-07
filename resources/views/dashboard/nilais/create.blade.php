@@ -49,19 +49,6 @@
         @endcan
 
         <div class="mb-3">
-          <label for="ustad" class="form-label">Pengajar</label>
-          <select class="form-select" name="ustad_id">
-            @foreach ($ustads as $ustad)
-            @if (old('id') == $ustad->id)
-            <option value="{{ $ustad->id }}" selected>{{ $ustad->name }}</option>
-            @else
-            <option value="{{ $ustad->id }}">{{ $ustad->name }}</option>
-            @endif
-            @endforeach
-          </select>
-        </div>
-
-        <div class="mb-3">
           <label for="santri" class="form-label">Nama Santri</label>
           <select class="form-select" name="santri_id">
             @foreach ($santris as $santri)
