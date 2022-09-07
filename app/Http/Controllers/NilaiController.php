@@ -112,7 +112,7 @@ class NilaiController extends Controller
                 'nilai' => 'required|integer'
             ]);
 
-            $user_id = User::where('id', auth()->user()->id)->pluck('id');
+            $user_id = User::pluck('id', auth()->user()->id);
             $validatedData['ustad_id'] = Ustad::where('user_id', $user_id)->pluck('id');
             dd($user_id);
         }
