@@ -6,6 +6,7 @@ use App\Models\Kitab;
 use App\Models\Nilai;
 use App\Models\Rumpun;
 use App\Models\Santri;
+use App\Models\User;
 use App\Models\Ustad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -111,7 +112,9 @@ class NilaiController extends Controller
                 'nilai' => 'required|integer'
             ]);
 
-            $validatedData['ustad_id'] = Ustad::where('user_id', auth()->user()->id);
+            $user_id = User::where('id', auth()->user()->id)->pluck('id');
+            $validatedData['ustad_id'] = Ustad::where('user_id', $user_id);
+            dd($validatedData);
         }
 
         Nilai::create($validatedData);
