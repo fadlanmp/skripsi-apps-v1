@@ -113,7 +113,7 @@ class NilaiController extends Controller
             ]);
 
             $user_id = User::where('id', auth()->user()->id)->pluck('id');
-            $validatedData['ustad_id'] = Ustad::where('user_id', $user_id);
+            $validatedData['ustad_id'] = Ustad::where('user_id', $user_id)->pluck('id');
             dd($validatedData);
         }
 
