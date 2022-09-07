@@ -67,7 +67,7 @@ class NilaiController extends Controller
                 'rumpuns' => Rumpun::all(),
                 'santris' => Santri::all(),
                 // 'ustads' => Ustad::all(),
-                'ustads' => Ustad::where('user_id', auth()->user()->id)->pluck('id'),
+                // 'ustads' => Ustad::where('user_id', auth()->user()->id)->pluck('id'),
                 'kitabs' => Kitab::all()
             ]);
         }
@@ -89,14 +89,30 @@ class NilaiController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'rumpun_id' => 'required',
-            'santri_id' => 'required',
-            'kitab_id' => 'required',
-            'ustad_id' => 'required',
-            'nilai' => 'required|integer'
-        ]);
+        
         // dd($validatedData);
+
+        if(Gate::allows('admin'))
+        {
+            $validatedData = $request->validate([
+                'rumpun_id' => 'required',
+                'santri_id' => 'required',
+                'kitab_id' => 'required',
+                'ustad_id' => 'required',
+                'nilai' => 'required|integer'
+            ]);
+        }
+        else
+        {
+            $validatedData = $request->validate([
+                'rumpun_id' => 'required',
+                'santri_id' => 'required',
+                'kitab_id' => 'required',
+                'nilai' => 'required|integer'
+            ]);
+
+            $validatedData['ustad_id'] = Ustad::where('user_id', auth()->user()->id);
+        }
 
         Nilai::create($validatedData);
 

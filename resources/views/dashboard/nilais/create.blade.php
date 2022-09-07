@@ -34,32 +34,18 @@
         </div>
 
         @can('admin')
-        <div class="mb-3">
-          <label for="ustad" class="form-label">Pengajar</label>
-          <select class="form-select" name="ustad_id">
-            @foreach ($ustads as $ustad)
-            @if (old('id') == $ustad->id)
-            <option value="{{ $ustad->id }}" selected>{{ $ustad->name }}</option>
-            @else
-            <option value="{{ $ustad->id }}">{{ $ustad->name }}</option>
-            @endif
-            @endforeach
-          </select>
-        </div>
-            
-        @elsecan('ustad')
           <div class="mb-3">
             <label for="ustad" class="form-label">Pengajar</label>
             <select class="form-select" name="ustad_id">
               @foreach ($ustads as $ustad)
-              @if (old('ustad_id') == $ustad->ustad_id)
-              <option value="{{ $ustad->ustad_id }}" selected>{{ $ustad->name }}</option>
+              @if (old('id') == $ustad->id)
+              <option value="{{ $ustad->id }}" selected>{{ $ustad->name }}</option>
               @else
-              <option value="{{ $ustad->ustad_id }}">{{ $ustad->name }}</option>
+              <option value="{{ $ustad->id }}">{{ $ustad->name }}</option>
               @endif
               @endforeach
             </select>
-          </div> 
+          </div>
         @endcan
 
 
