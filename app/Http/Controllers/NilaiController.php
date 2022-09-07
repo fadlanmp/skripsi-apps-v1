@@ -111,8 +111,9 @@ class NilaiController extends Controller
                 'kitab_id' => 'required',
                 'nilai' => 'required|integer'
             ]);
+            
 
-            $user_id = User::pluck('id', auth()->user()->id);
+            $user_id = User::select('id', 'id as user_id');
             $validatedData['ustad_id'] = Ustad::where('user_id', $user_id)->pluck('id');
             dd($user_id);
         }
