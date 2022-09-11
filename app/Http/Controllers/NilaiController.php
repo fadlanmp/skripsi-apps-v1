@@ -90,9 +90,6 @@ class NilaiController extends Controller
      */
     public function store(Request $request)
     {
-        
-        // dd($validatedData);
-
         if(Gate::allows('admin'))
         {
             $validatedData = $request->validate([
@@ -113,8 +110,9 @@ class NilaiController extends Controller
             ]);
             
 
-            $user_id = User::select('id', 'id as user_id');
-            $validatedData['ustad_id'] = Ustad::where('user_id', $user_id)->pluck('id');
+            // $user_id = User::select('id', 'id as user_id');
+            $user_id = Ustad::where('user_id', 1)->pluck('id');
+            // $validatedData['ustad_id'] = Ustad::where('user_id', $user_id)->pluck('id');
             dd($user_id);
         }
 
