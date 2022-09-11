@@ -111,7 +111,7 @@ class NilaiController extends Controller
             
 
             // $user_id = User::select('id', 'id as user_id');
-            $user_id = Ustad::all()->pluck('id')->where('user_id', '2');
+            $user_id = Ustad::all()->pluck('id')->where('user_id', 2);
             // $validatedData['ustad_id'] = Ustad::where('user_id', $user_id)->pluck('id');
             dd($user_id);
         }
