@@ -20,6 +20,7 @@
           @endforeach
         </select>
       </div>
+
       <div class="mb-3">
         <label for="kitab" class="form-label">Nama Kitab</label>
         <select class="form-select" name="kitab_id">
@@ -33,6 +34,7 @@
         </select>
       </div>
 
+      @can('admin')
       <div class="mb-3">
         <label for="ustad" class="form-label">Pengajar</label>
         <select class="form-select" name="ustad_id">
@@ -45,6 +47,8 @@
           @endforeach
         </select>
       </div>
+        @endcan
+      
 
       <div class="mb-3">
         <label for="santri" class="form-label">Nama Santri</label>
