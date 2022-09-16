@@ -67,8 +67,6 @@ class NilaiController extends Controller
             return view('dashboard.nilais.create',[
                 'rumpuns' => Rumpun::all(),
                 'santris' => Santri::all(),
-                // 'ustads' => Ustad::all(),
-                // 'ustads' => Ustad::where('user_id', auth()->user()->id)->pluck('id'),
                 'kitabs' => Kitab::all()
             ]);
         }
@@ -109,11 +107,7 @@ class NilaiController extends Controller
                 'nilai' => 'required|integer'
             ]);
             
-
-            // $user_id = User::select('id', 'id as user_id');
-            $user_id = Ustad::all()->pluck('id')->when('user_id', auth()->user()->id);
-            // $validatedData['ustad_id'] = Ustad::where('user_id', $user_id)->pluck('id');
-            dd($user_id);
+            $validatedData['ustad_id'] = Ustad::where('user_id', auth()->user()->id)->first()->id;
         }
 
         Nilai::create($validatedData);
@@ -143,13 +137,34 @@ class NilaiController extends Controller
      */
     public function edit(Nilai $nilai)
     {
-        return view('dashboard.nilais.edit',[
-            'nilai' => $nilai,
-            'rumpuns' => Rumpun::all(),
-            'santris' => Santri::all(),
-            'ustads' => Ustad::all(),
-            'kitabs' => Kitab::all()
-        ]);
+        if(Gate::allows('admin'))
+        {
+            return view('dashboard.nilais.edit',[
+                'nilai' => $nilai,
+                'rumpuns' => Rumpun::all(),
+                'santris' => Santri::all(),
+                'ustads' => Ustad::all(),
+                'kitabs' => Kitab::all()
+            ]);
+        }
+        
+        elseif(Gate::allows('ustad'))
+        {
+            return view('dashboard.nilais.edit',[
+                'nilai' => $nilai,
+                'rumpuns' => Rumpun::all(),
+                'santris' => Santri::all(),
+                'kitabs' => Kitab::all()
+            ]);
+        }
+        
+        else
+        {
+            return view('dashboard.nilais.index', [
+                $santri_id = Santri::where('user_id', auth()->user()->id)->pluck('id'),
+                'nilais' => Nilai::where('santri_id', $santri_id)->get()
+            ]);
+        }
     }
 
     /**
@@ -161,13 +176,34 @@ class NilaiController extends Controller
      */
     public function update(Request $request, Nilai $nilai)
     {
-        $rules = [
-            'rumpun_id' => 'required',
-            'santri_id' => 'required',
-            'kitab_id' => 'required',
-            'ustad_id' => 'required',
-            'nilai' => 'required|integer'
-        ];
+        if(Gate::allows('admin'))
+        {
+            $rules = [
+                'rumpun_id' => 'required',
+                'santri_id' => 'required',
+                'kitab_id' => 'required',
+                'ustad_id' => 'required',
+                'nilai' => 'required|integer'
+            ];
+        }
+        
+        elseif(Gate::allows('ustad'))
+        {
+            $rules = [
+                'rumpun_id' => 'required',
+                'santri_id' => 'required',
+                'kitab_id' => 'required',
+                'nilai' => 'required|integer'
+            ];
+        }
+        
+        else
+        {
+            return view('dashboard.nilais.index', [
+                $santri_id = Santri::where('user_id', auth()->user()->id)->pluck('id'),
+                'nilais' => Nilai::where('santri_id', $santri_id)->get()
+            ]);
+        }
 
         $validatedData = $request->validate(($rules));
 
