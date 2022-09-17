@@ -23,14 +23,14 @@
           </a>
         </li> --}}
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/ustad') ? 'active' : '' }}" href="/dashboard/ustads">
+          <a class="nav-link {{ Request::is('dashboard/ustads') ? 'active' : '' }}" href="/dashboard/ustads">
             <span data-feather="users"></span>
             Daftar Ustad
           </a>
         </li>
         @canany(['admin', 'ustad'])
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/santri') ? 'active' : '' }}" href="/dashboard/santris">
+          <a class="nav-link {{ Request::is('dashboard/santris') ? 'active' : '' }}" href="/dashboard/santris">
             <span data-feather="users"></span>
             Daftar Santri
           </a>
