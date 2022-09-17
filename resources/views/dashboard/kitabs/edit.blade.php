@@ -27,7 +27,7 @@
           @enderror
         </div>
         <div class="mb-3">
-          <label for="rumpun" class="form-label">Rumpun Kitab</label>
+          <label for="rumpun_id" class="form-label">Rumpun Kitab</label>
           <select class="form-select" name="rumpun_id">
             @foreach ($rumpuns as $rumpun)
             @if (old('rumpun_id', $rumpun->rumpun_id) == $rumpun->id)
