@@ -61,8 +61,7 @@ class DashboardKitabController extends Controller
         ]);
 
         if($request->file('image')){
-            $validatedData['image'] = $request->file('image')->storeOnCloudinary();
-            // $uploadedFileUrl = Cloudinary::upload($request->file('file')->getRealPath())->getSecurePath();
+            $validatedData['image'] = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
         }
 
 
@@ -126,7 +125,7 @@ class DashboardKitabController extends Controller
             if($request->oldImage){
                 Storage::delete($request->oldImage);
             }
-            $validatedData['image'] = $request->file('image')->storeOnCloudinary();
+            $validatedData['image'] = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
         }
         
 

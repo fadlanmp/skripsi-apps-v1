@@ -51,7 +51,7 @@
           <label for="image" class="form-label @error('image') is-invalid @enderror">Gambar Kitab</label>
           <input type="hidden" name="oldImage" value="{{ $kitab->image }}">
           @if ($kitab->image)
-            <img src="{{ asset('storage/' . $kitab->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+            <img src="{{ $kitab->image }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
           @else
             <img class="img-preview img-fluid mb-3 col-sm-5">
           @endif
