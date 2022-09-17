@@ -7,6 +7,8 @@ use App\Models\Rumpun;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+
 
 
 
@@ -59,7 +61,8 @@ class DashboardKitabController extends Controller
         ]);
 
         if($request->file('image')){
-            $validatedData['image'] = $request->file('image')->store('kitab-images');
+            $validatedData['image'] = $request->file('image')->storeOnCloudinary();
+            // $uploadedFileUrl = Cloudinary::upload($request->file('file')->getRealPath())->getSecurePath();
         }
 
 
@@ -123,7 +126,7 @@ class DashboardKitabController extends Controller
             if($request->oldImage){
                 Storage::delete($request->oldImage);
             }
-            $validatedData['image'] = $request->file('image')->store('kitab-images');
+            $validatedData['image'] = $request->file('image')->storeOnCloudinary();
         }
         
 
@@ -141,9 +144,9 @@ class DashboardKitabController extends Controller
      */
     public function destroy(Kitab $kitab)
     {
-        if($kitab->image){
-            Storage::delete($kitab->image);
-        }
+        // if($kitab->image){
+        //     Storage::delete($kitab->image);
+        // }
 
         Kitab::destroy($kitab->id);
         return redirect('/dashboard/kitabs')->with('success', 'Kitab telah dihapus!');
