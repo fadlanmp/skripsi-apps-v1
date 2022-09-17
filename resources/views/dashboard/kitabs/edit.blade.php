@@ -30,7 +30,7 @@
           <label for="rumpun_id" class="form-label">Rumpun Kitab</label>
           <select class="form-select" name="rumpun_id">
             @foreach ($rumpuns as $rumpun)
-            @if (old('rumpun_id', $rumpun->rumpun_id) == $rumpun->id)
+            @if (old('rumpun_id', $rumpun->id) == $rumpun->id)
             <option value="{{ $rumpun->id }}" selected>{{ $rumpun->name }}</option>
             @else
             <option value="{{ $rumpun->id }}">{{ $rumpun->name }}</option>
