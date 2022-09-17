@@ -132,7 +132,7 @@ class DashboardPostController extends Controller
                 Storage::delete($request->oldImage);
             }
             // $validatedData['image'] = Cloudinary::upload($request->file('image')->storeOnCloudinary('blog')->getRealPath())->getSecurePath();
-            $validatedData['image'] = $request->file('image')->storeOnCloudinary('blog')->getRealPath()->getSecurePath();
+            $validatedData['image'] = $request->file('image')->storeOnCloudinary('blog')->getSecurePath();
             dd($validatedData);
         }
         
