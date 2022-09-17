@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+
 
 
 class DashboardPostController extends Controller
@@ -129,7 +131,8 @@ class DashboardPostController extends Controller
             if($request->oldImage){
                 Storage::delete($request->oldImage);
             }
-            $validatedData['image'] = $request->file('image')->store('post-images');
+            $validatedData['image'] = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath()->storeOnCloudinary('blog');
+            dd($validatedData);
         }
         
         $validatedData['user_id'] = auth()->user()->id;
