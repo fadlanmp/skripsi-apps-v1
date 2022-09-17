@@ -61,7 +61,7 @@
         <div class="col-md-6 mb-3">
           <div class="card">
             @if ($post->image)
-              <img src=" {{ $post->image }}" alt="{{ $post->category->name }}" class="img-fluid">
+              <img src=" {{ $post->image }}" alt="{{ $post->category->name }}" class="img-fluid" height="400">
             @else
               <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}" alt="{{ $post->category->name }}" class="card-img-top">
             @endif
