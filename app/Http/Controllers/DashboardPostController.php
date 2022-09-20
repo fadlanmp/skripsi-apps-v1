@@ -25,7 +25,7 @@ class DashboardPostController extends Controller
 
         if(Gate::allows('admin')){
             return view('dashboard.posts.index', [
-                'posts' => Post::latest()
+                'posts' => Post::latest()->get()
             ]);
 
         }else{
