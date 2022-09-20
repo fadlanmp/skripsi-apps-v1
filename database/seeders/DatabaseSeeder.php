@@ -30,7 +30,6 @@ class DatabaseSeeder extends Seeder
         
 
         // User uji coba
-
         User::create([
             'name' => 'Admin',
             'username' => 'admin1',
@@ -114,7 +113,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         //contoh postingan
-        Post::factory(10)->create();
+        Post::factory(20)->create();
 
         //contoh kitab
         Kitab::create([

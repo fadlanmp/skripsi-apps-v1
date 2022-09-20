@@ -23,7 +23,7 @@ class PostFactory extends Factory
             'body' => '<p>' . implode('</p><p>', fake()->paragraphs(mt_rand(5,10))).'</p>',
             // 'published_at' => '',
             'category_id' => mt_rand(1,2),
-            'user_id' => mt_rand(1,5)
+            'user_id' => mt_rand(4,8)
         ];
     }
 }
