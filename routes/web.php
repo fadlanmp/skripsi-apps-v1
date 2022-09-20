@@ -78,5 +78,5 @@ Route::resource('/dashboard/nilais', NilaiController::class)->middleware('auth')
 
 
 // Route::post('/dashboard/password/{user}/reset', [PasswordController::class, 'reset']);
-Route::get('/dashboard/password/{user}', [PasswordController::class, 'index']);
-Route::put('/dashboard/password/{user}', [PasswordController::class, 'update']);
+Route::get('/dashboard/password/{user}', [PasswordController::class, 'index'])->middleware('auth');
+Route::put('/dashboard/password/{user}', [PasswordController::class, 'update'])->middleware('auth');

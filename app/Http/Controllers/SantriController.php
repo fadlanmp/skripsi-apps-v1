@@ -127,7 +127,7 @@ class SantriController extends Controller
      */
     public function destroy(Santri $santri)
     {
-        Santri::destroy($santri->id);
+        Santri::destroy('id', $santri->id);
         User::destroy('id', $santri->user_id);
         return redirect('/dashboard/santris')->with('success', 'Profil ustad dihapus!');
     }
