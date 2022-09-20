@@ -54,14 +54,15 @@ class SantriController extends Controller
 
         $validatedDataUser['password'] = 12345;
         $validatedDataUser['password'] = Hash::make($validatedDataUser['password']);
-        User::create($validatedDataUser);
-
+        
         $validatedDataSantri = $request->validate([
             'no_induk' => 'unique:santris',
             'name' => 'required|max:55',
             'jk' => 'required'
         ]);
         $validatedDataSantri['user_id'] = User::all()->pluck('id')->last();
+        
+        User::create($validatedDataUser);
         Santri::create($validatedDataSantri);
 
         return redirect('/dashboard/santris')->with('success', 'New post has been added!');

@@ -49,20 +49,21 @@ class UstadController extends Controller
         $validatedDataUser = $request->validate([
             'name' => 'required|max:55',
             'username' => 'required|min:5|max:55|unique:users',
-            // 'password' => 'required|min:8|max:12',
         ]);
+
         $validatedDataUser['role_id'] = 2;
 
         $validatedDataUser['password'] = 12345;
         $validatedDataUser['password'] = Hash::make($validatedDataUser['password']);
-        User::create($validatedDataUser);
-
+        
         $validatedDataUstad = $request->validate([
             'name' => 'required|max:55',
             'jk' => 'required',
             'no_kontak' => 'min:11|max:20|unique:ustads'
         ]);
         $validatedDataUstad['user_id'] = User::all()->pluck('id')->last();
+        
+        User::create($validatedDataUser);
         Ustad::create($validatedDataUstad);
 
         return redirect('/dashboard/ustads')->with('success', 'New post has been added!');
