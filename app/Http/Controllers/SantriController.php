@@ -64,7 +64,7 @@ class SantriController extends Controller
         $validatedDataSantri['user_id'] = User::all()->pluck('id')->last();
         Santri::create($validatedDataSantri);
 
-        return redirect('/dashboard/santris')->with('success', 'New post has been added!');
+        return redirect('/dashboard/santris')->with('success', 'Santri baru berhasil ditambahkan!');
     }
 
     /**
