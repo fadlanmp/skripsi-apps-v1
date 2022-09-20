@@ -61,11 +61,8 @@ class UstadController extends Controller
             'jk' => 'required',
             'no_kontak' => 'min:11|max:20|unique:ustads'
         ]);
-        $validatedDataUstad['user_id'] = User::all()->pluck('id')->last();
-
-        dd($validatedDataUser);
-        
         User::create($validatedDataUser);
+        $validatedDataUstad['user_id'] = User::all()->pluck('id')->last();
         Ustad::create($validatedDataUstad);
 
         return redirect('/dashboard/ustads')->with('success', 'New post has been added!');
