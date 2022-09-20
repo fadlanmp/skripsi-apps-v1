@@ -9,17 +9,17 @@
             <a href="/dashboard/ustads" class="btn btn-success mb-2"><span data-feather="arrow-left"></span> Kembali ke daftar ustad</a>
             @canany(['admin', 'ustad'])
                 
-            <a href="/dashboard/password/{{ $ustad->user_id }}" class="btn btn-info mb-2"><span data-feather="edit"></span> Edit Password</a>
+            {{-- <a href="/dashboard/password/{{ $ustad->user_id }}" class="btn btn-info mb-2"><span data-feather="edit"></span> Edit Password</a> --}}
             @endcanany
 
             @can('admin')
                 <a href="/dashboard/ustads/{{ $ustad->id }}/edit" class="btn btn-primary mb-2"><span data-feather="edit"></span> Edit Profil</a>
 
 
-                <form action="/dashboard/ustads/{{ $ustad->id }}/reset" method="post" class="d-inline">
+                {{-- <form action="/dashboard/ustads/{{ $ustad->id }}/reset" method="post" class="d-inline">
                     @csrf
                     <button class="btn btn-warning mb-2" onclick="return confirm('Are you sure?')"><span data-feather="rotate-ccw"></span> Reset Password</button>
-                </form>
+                </form> --}}
     
                 <form action="/dashboard/ustads/{{ $ustad->id }}" method="post" class="d-inline">
                     @method('delete')

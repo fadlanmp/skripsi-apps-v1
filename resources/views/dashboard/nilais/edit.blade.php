@@ -73,7 +73,7 @@
         @enderror
       </div>
 
-        <button type="submit" class="btn btn-primary">Edit Post</button>
+        <button type="submit" class="btn btn-primary">Edit Nilai</button>
       </form>
 </div>
 

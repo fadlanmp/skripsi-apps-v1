@@ -19,7 +19,7 @@
                 <button class="btn btn-danger mb-2" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span> Delete</button>
             </form> --}}
 
-            <a href="/dashboard/password/{{auth()->user()->id}}" class="btn btn-info mb-2"><span data-feather="edit"></span> Edit Password</a>
+            {{-- <a href="/dashboard/password/{{auth()->user()->id}}" class="btn btn-info mb-2"><span data-feather="edit"></span> Edit Password</a> --}}
 
             <table class="table">
                 <tr>

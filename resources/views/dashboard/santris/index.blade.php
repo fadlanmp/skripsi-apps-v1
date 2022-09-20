@@ -37,10 +37,10 @@
             <a href="/dashboard/santris/{{ $santri->id }}" class="badge btn-success"><span data-feather="eye"></span></a>
             @can('admin')
               <a href="/dashboard/santris/{{ $santri->id }}/edit" class="badge btn-info"><span data-feather="edit"></span></a>
-              <form action="/dashboard/santris/{{ $santri->id }}/reset" method="post" class="d-inline">
+              {{-- <form action="/dashboard/santris/{{ $santri->id }}/reset" method="post" class="d-inline">
                 @csrf
                 <button class="badge btn-warning border-0" onclick="return confirm('Are you sure?')"><span data-feather="rotate-ccw"></span></button>
-                </form>
+              </form> --}}
               <form action="/dashboard/santris/{{ $santri->id }}" method="post" class="d-inline">
               @method('delete')
               @csrf

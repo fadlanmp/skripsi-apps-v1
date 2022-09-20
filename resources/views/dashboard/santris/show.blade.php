@@ -8,7 +8,7 @@
 
             <a href="/dashboard/santris" class="btn btn-success mb-2"><span data-feather="arrow-left"></span> Kembali ke daftar santri</a>
 
-            <a href="/dashboard/password/{{ $santri->user_id }}" class="btn btn-info mb-2"><span data-feather="edit"></span> Edit Password</a>
+            {{-- <a href="/dashboard/password/{{ $santri->user_id }}" class="btn btn-info mb-2"><span data-feather="edit"></span> Edit Password</a> --}}
 
             @can('admin')
             <a href="/dashboard/santris/{{ $santri->id }}/edit" class="btn btn-warning mb-2"><span data-feather="edit"></span> Edit</a>
