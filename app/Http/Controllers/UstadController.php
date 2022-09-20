@@ -62,6 +62,8 @@ class UstadController extends Controller
             'no_kontak' => 'min:11|max:20|unique:ustads'
         ]);
         $validatedDataUstad['user_id'] = User::all()->pluck('id')->last();
+
+        dd($validatedDataUser);
         
         User::create($validatedDataUser);
         Ustad::create($validatedDataUstad);
