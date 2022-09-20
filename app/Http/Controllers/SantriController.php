@@ -60,9 +60,8 @@ class SantriController extends Controller
             'name' => 'required|max:55',
             'jk' => 'required'
         ]);
-        $validatedDataSantri['user_id'] = User::all()->pluck('id')->last();
-        
         User::create($validatedDataUser);
+        $validatedDataSantri['user_id'] = User::all()->pluck('id')->last();
         Santri::create($validatedDataSantri);
 
         return redirect('/dashboard/santris')->with('success', 'New post has been added!');
