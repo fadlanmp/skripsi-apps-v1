@@ -152,8 +152,8 @@ class UstadController extends Controller
         //     Storage::delete($ustad->image);
         // }
 
-        Ustad::destroy('id', $ustad->id);
-        User::destroy('id', $ustad->user_id);
+        Ustad::destroy($ustad->id);
+        User::destroy($ustad->user_id);
         return redirect('/dashboard/ustads')->with('success', 'Profil ustad dihapus!');
     }
 
