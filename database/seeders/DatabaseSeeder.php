@@ -11,6 +11,8 @@ use App\Models\Kitab;
 use App\Models\Post;
 use App\Models\Rumpun;
 use App\Models\Role;
+use App\Models\Santri;
+use App\Models\Ustad;
 
 class DatabaseSeeder extends Seeder
 {
@@ -39,16 +41,32 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Ustad',
             'username' => 'ustad1',
-            'role_id' => 1,
+            'role_id' => 2,
             'password' => bcrypt('12345')
         ]);
         User::create([
             'name' => 'Santri',
             'username' => 'santri',
-            'role_id' => 1,
+            'role_id' => 3,
             'password' => bcrypt('12345')
         ]);
         User::factory(5)->create();
+
+        // Ustad uji coba
+        Ustad::create([
+            'user_id' => '2',
+            'name' => 'ustad',
+            'jk' => 'laki-laki',
+            'no_kontak' => '081234567890'
+        ]);
+
+        // Santri uji coba
+        Santri::create([
+            'user_id' => '3',
+            'name' => 'santri',
+            'jk' => 'laki-laki',
+            'no_induk' => '2022.01.001'
+        ]);
 
         //kategori postingan
         Category::create([
