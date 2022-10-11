@@ -48,7 +48,7 @@
       </tbody>
     </table>
   </div>
-  <h2>Blog</h2>
+  {{-- <h2>Blog</h2>
   <div class="table-responsive">
     <table class="table table-striped table-sm">
       <a href="/dashboard/posts">Lihat lebih banyak!</a>
@@ -76,7 +76,7 @@
         @endforeach
       </tbody>
     </table>
-  </div>
+  </div> --}}
 
   @include('admin.script')
 
