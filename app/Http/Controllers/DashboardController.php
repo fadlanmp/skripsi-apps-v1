@@ -9,6 +9,7 @@ use App\Models\Ustad;
 use App\Models\Santri;
 use App\Models\Nilai;
 use App\Models\Rumpun;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -78,7 +79,8 @@ class DashboardController extends Controller
                 $mapel[] = $k->title;
                 $nilai[] = Nilai::where('kitab_id', $k->id, '&&', 'santri_id',$santri_id);
             }
-            dd($nilai);
+            $user = User::find($id);
+            dd($user);
 
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
