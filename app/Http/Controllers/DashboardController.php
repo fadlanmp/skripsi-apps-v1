@@ -26,9 +26,10 @@ class DashboardController extends Controller
         foreach($rumpuns as $r){
             $rumpun[] = $r->name;
         }
+        
 
         if(Gate::allows('admin')){
-            
+            dd($rumpun);
             
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
