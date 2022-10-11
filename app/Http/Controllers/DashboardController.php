@@ -16,6 +16,11 @@ class DashboardController extends Controller
     {
 
         if(Gate::allows('admin')){
+            function hitung(){
+                $santri = Santri::count()->where('jk','laki-laki');
+                dd($santri);
+            }
+            
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',

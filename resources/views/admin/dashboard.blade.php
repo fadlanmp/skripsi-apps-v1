@@ -165,7 +165,7 @@
           type: 'column'
       },
       title: {
-          text: 'Rekap Santri Berdasarkan Jenis Kelamin'
+          text: 'Rekap Civitas PP Manarul Hasan'
       },
       xAxis: {
           categories: [            
@@ -197,7 +197,10 @@
       series: [{
           name: 'Santri',
           data: [30,50]
-
+      },
+      {
+        name: 'Ustad',
+        data: [3,8]
       }]
   });
   </script>
