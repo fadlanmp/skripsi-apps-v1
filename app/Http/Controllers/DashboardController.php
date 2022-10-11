@@ -17,7 +17,7 @@ class DashboardController extends Controller
     {
 
         if(Gate::allows('admin')){
-            $santri = Santri::first();
+            $santri = Santri::all()->count('jk');
             // $santri->loadCount('jk');
             dd($santri);
             
