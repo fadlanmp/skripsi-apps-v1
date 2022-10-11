@@ -16,15 +16,21 @@ class DashboardController extends Controller
     public function index()
     {
 
+        $santrilk = Santri::where('jk','laki-laki')->count();
+        $santriptr = Santri::where('jk','perempuan')->count();
+        $ustadlk = Ustad::where('jk','laki-laki')->count();
+        $ustadptr = Ustad::where('jk','perempuan')->count();
+        
         if(Gate::allows('admin')){
-            $santrilk = Santri::where('jk','laki-laki')->count();
-            $santriptr = Santri::where('jk','perempuan')->count();
+            
             
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',
                 'santrilk' => $santrilk,
                 'santriptr' => $santriptr,
+                'ustadlk' => $ustadlk,
+                'ustadptr' => $ustadptr,
                 'ustads' => Ustad::all(),
                 'kitabs' => Kitab::all(),
                 'posts' => Post::all(),
