@@ -16,11 +16,6 @@ class DashboardController extends Controller
     {
 
         if(Gate::allows('admin')){
-            $santris = Santri::all();
-            $jk = [];
-            foreach($santris as $santri){
-                $jk[] = $santri->jk;
-            }
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',
@@ -28,7 +23,6 @@ class DashboardController extends Controller
                 'kitabs' => Kitab::all(),
                 'posts' => Post::all(),
                 'santris' => Santri::all(),
-                'jk' => $jk,
                 'nilais' => Nilai::all()]
             );
         }
