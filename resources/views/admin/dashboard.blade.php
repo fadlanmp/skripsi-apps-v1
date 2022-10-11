@@ -196,7 +196,7 @@
       },
       series: [{
           name: 'Santri',
-          data: [{!! $santrilk !!},{!! santriptr !!}]
+          data: [{!! json_encode($santrilk) !!},{!! json_encode($santriptr) !!}]
       },
       {
         name: 'Ustad',
