@@ -6,13 +6,13 @@
     <h1 class="h2">Welcome back, {{ auth()->user()->name }}</h1>
   </div>
   
-  {{-- @canany(['admin', 'ustad'])
+  @canany(['admin', 'ustad'])
     <div id="civitas"></div>
-  @endcanany --}}
+  @endcanany
 
-  {{-- @can('santri')
+  @can('santri')
     <div id="civitasSantri"></div>
-  @endcan --}}
+  @endcan
 
   <h2>Daftar Nilai</h2>
   <div class="table-responsive">

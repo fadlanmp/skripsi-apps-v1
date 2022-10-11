@@ -1,6 +1,7 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 
 {{-- chart civitas admin & ustad --}}
+@canany(['admin', 'ustad'])
 <script>
     Highcharts.chart('civitas', {
         chart: {
@@ -44,6 +45,7 @@
         }]
     });
 </script>
+@endcanany
 
 {{-- chart civitas santri --}}
 <script>
