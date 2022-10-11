@@ -16,12 +16,6 @@
           </a>
         </li>
         @endcanany
-        {{-- <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/users/create') ? 'active' : '' }}" href="/dashboard/users/create">
-            <span data-feather="user-plus"></span>
-            Tambah User
-          </a>
-        </li> --}}
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard/ustads') ? 'active' : '' }}" href="/dashboard/ustads">
             <span data-feather="users"></span>

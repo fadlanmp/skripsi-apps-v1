@@ -52,7 +52,7 @@
             type: 'column'
         },
         title: {
-            text: 'Rekap Civitas PP Manarul Hasan'
+            text: 'Rekap Ustad PP Manarul Hasan'
         },
         xAxis: {
             categories: [
