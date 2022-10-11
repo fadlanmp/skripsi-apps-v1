@@ -23,6 +23,7 @@
   
 
   <div id="kitab"></div>
+  <div id="nilai"></div>
   
 
   <h2>Daftar Nilai</h2>

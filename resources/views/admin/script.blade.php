@@ -159,8 +159,46 @@
             }
         },
         series: [{
-            name: 'Kitab',
+            name: 'Post',
             data: {!! json_encode($posts) !!}
+        }]
+    });
+</script>
+
+{{-- chart Nilai --}}
+<script>
+    Highcharts.chart('nilai', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Rekap Nilai'
+        },
+        xAxis: {
+            categories:{!! json_encode($mapel) !!},
+            crosshair: true
+        },
+        yAxis: {
+            title: {
+                useHTML: true,
+                text: 'Nilai'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Mapel',
+            data: {!! json_encode($nilai) !!}
         }]
     });
 </script>
