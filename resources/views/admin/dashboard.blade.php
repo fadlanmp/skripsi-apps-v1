@@ -15,6 +15,7 @@
   @endcan
 
   <div id="kitab"></div>
+  <div id="posts"></div>
 
   <h2>Daftar Nilai</h2>
   <div class="table-responsive">
@@ -39,33 +40,6 @@
           <td>{{ $nilai->ustad->name }}</td>
           <td> {{ $nilai->santri->name }} </td>
           <td> {{ $nilai->nilai }} </td>
-        </tr>
-        @if ($loop->iteration == 5)
-            @break
-          @endif
-        @endforeach
-      </tbody>
-    </table>
-  </div>
-  <h2>Daftar Kitab</h2>
-  <div class="table-responsive">
-    <table class="table table-striped table-sm">
-      <a href="/dashboard/kitabs">Lihat lebih banyak!</a>
-      <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">Rumpun</th>
-          <th scope="col">Nama Kitab</th>
-          <th scope="col">Pengarang</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($kitabs as $kitab)
-        <tr>
-          <td>{{ $loop->iteration }}</td>
-          <td>{{ $kitab->rumpun->name }}</td>
-          <td>{{ $kitab->title }}</td>
-          <td> {{ $kitab->pengarang }} </td>
         </tr>
         @if ($loop->iteration == 5)
             @break

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Category;
 use App\Models\Kitab;
 use App\Models\Post;
 use App\Models\Ustad;
@@ -28,6 +28,13 @@ class DashboardController extends Controller
             $rumpun[] = $r->name;
             $jmlRumpun[] = Kitab::where('rumpun_id', $r->id)->count();
         }
+        $categories = Category::all();
+        $post = [];
+        $posts = [];
+        foreach($categories as $category){
+            $post[] = $category->name;
+            $posts[] = Post::where('category_id', $category->id)->count();
+        }
         
 
         if(Gate::allows('admin')){
@@ -40,8 +47,8 @@ class DashboardController extends Controller
                 'ustadptr' => $ustadptr,
                 'rumpun' => $rumpun,
                 'jmlRumpun' => $jmlRumpun,
-                'kitabs' => Kitab::all(),
-                'posts' => Post::all(),
+                'post' => $post,
+                'posts' => $posts,
                 'nilais' => Nilai::all()]
             );
         }
@@ -54,7 +61,8 @@ class DashboardController extends Controller
                 'santriptr' => $santriptr,
                 'ustadlk' => $ustadlk,
                 'ustadptr' => $ustadptr,
-                'kitabs' => Kitab::all(),
+                'rumpun' => $rumpun,
+                'jmlRumpun' => $jmlRumpun,
                 'posts' => Post::where('user_id', auth()->user()->id)->get(),
                 $ustad_id = Ustad::where('user_id', auth()->user()->id)->pluck('id'),
                 'nilais' => Nilai::where("ustad_id", $ustad_id)->get()
@@ -68,7 +76,8 @@ class DashboardController extends Controller
                 'active' => 'home',
                 'ustadlk' => $ustadlk,
                 'ustadptr' => $ustadptr,
-                'kitabs' => Kitab::all(),
+                'rumpun' => $rumpun,
+                'jmlRumpun' => $jmlRumpun,
                 'posts' => Post::where('user_id', auth()->user()->id)->get(),
                 $santri_id = Santri::where('user_id', auth()->user()->id)->pluck('id'),
                 'nilais' => Nilai::where('santri_id', $santri_id)->get()]

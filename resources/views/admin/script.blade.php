@@ -96,7 +96,7 @@
             type: 'column'
         },
         title: {
-            text: 'Rekap Civitas PP Manarul Hasan'
+            text: 'Rekap Kitab'
         },
         xAxis: {
             categories:{!! json_encode($rumpun) !!},
@@ -123,6 +123,44 @@
         series: [{
             name: 'Kitab',
             data: {!! json_encode($jmlRumpun) !!}
+        }]
+    });
+</script>
+
+{{-- chart Posts --}}
+<script>
+    Highcharts.chart('posts', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Rekap Postingan/Blog'
+        },
+        xAxis: {
+            categories:{!! json_encode($post) !!},
+            crosshair: true
+        },
+        yAxis: {
+            title: {
+                useHTML: true,
+                text: 'Jumlah'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Kitab',
+            data: {!! json_encode($posts) !!}
         }]
     });
 </script>
