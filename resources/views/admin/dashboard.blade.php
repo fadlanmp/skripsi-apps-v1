@@ -168,7 +168,7 @@
           text: 'Rekap Santri Berdasarkan Jenis Kelamin'
       },
       xAxis: {
-          categories: [{!!json_encode( $santris->jk )!!},
+          categories: [{!!json_encode( $jk )!!},
             
               'Laki-laki',
               'Perempuan'
