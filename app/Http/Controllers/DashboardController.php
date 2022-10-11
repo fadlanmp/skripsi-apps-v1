@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Ustad;
 use App\Models\Santri;
 use App\Models\Nilai;
+use App\Models\Rumpun;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -20,6 +21,11 @@ class DashboardController extends Controller
         $santriptr = Santri::where('jk','perempuan')->count();
         $ustadlk = Ustad::where('jk','laki-laki')->count();
         $ustadptr = Ustad::where('jk','perempuan')->count();
+        $rumpuns = Rumpun::all();
+        $rumpun = [];
+        foreach($rumpuns as $r){
+            $rumpun[] = $r->name;
+        }
 
         if(Gate::allows('admin')){
             
@@ -31,10 +37,9 @@ class DashboardController extends Controller
                 'santriptr' => $santriptr,
                 'ustadlk' => $ustadlk,
                 'ustadptr' => $ustadptr,
-                'ustads' => Ustad::all(),
+                'rumpun' => $rumpun,
                 'kitabs' => Kitab::all(),
                 'posts' => Post::all(),
-                'santris' => Santri::all(),
                 'nilais' => Nilai::all()]
             );
         }
@@ -47,9 +52,7 @@ class DashboardController extends Controller
                 'santriptr' => $santriptr,
                 'ustadlk' => $ustadlk,
                 'ustadptr' => $ustadptr,
-                'ustads' => Ustad::all(),
                 'kitabs' => Kitab::all(),
-                'santris' => Santri::all(),
                 'posts' => Post::where('user_id', auth()->user()->id)->get(),
                 $ustad_id = Ustad::where('user_id', auth()->user()->id)->pluck('id'),
                 'nilais' => Nilai::where("ustad_id", $ustad_id)->get()
@@ -63,7 +66,6 @@ class DashboardController extends Controller
                 'active' => 'home',
                 'ustadlk' => $ustadlk,
                 'ustadptr' => $ustadptr,
-                'ustads' => Ustad::all(),
                 'kitabs' => Kitab::all(),
                 'posts' => Post::where('user_id', auth()->user()->id)->get(),
                 $santri_id = Santri::where('user_id', auth()->user()->id)->pluck('id'),

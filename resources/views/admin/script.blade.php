@@ -89,4 +89,46 @@
     });
 </script>
 
-
+{{-- chart kitab --}}
+<script>
+    Highcharts.chart('kitab', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Rekap Civitas PP Manarul Hasan'
+        },
+        xAxis: {
+            categories: [
+                {!! json_encode($rumpun) !!}
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            title: {
+                useHTML: true,
+                text: 'Jumlah'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Santri',
+            data: [{!! json_encode($santrilk) !!},{!! json_encode($santriptr) !!}]
+        },
+        {
+        name: 'Ustad',
+        data: [{!! json_encode($ustadlk) !!},{!! json_encode($ustadptr) !!}]
+        }]
+    });
+</script>

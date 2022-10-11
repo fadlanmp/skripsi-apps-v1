@@ -14,6 +14,8 @@
     <div id="civitasSantri"></div>
   @endcan
 
+  <div id="kitab"></div>
+
   <h2>Daftar Nilai</h2>
   <div class="table-responsive">
     <table class="table table-striped table-sm">
