@@ -122,7 +122,7 @@
         },
         series: [{
             name: 'Kitab',
-            data: [22,2,2,2,2,2,2,2,2]
+            data: [{!! json_encode($jmlRumpun) !!}]
         }]
     });
 </script>

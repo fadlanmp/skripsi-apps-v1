@@ -40,6 +40,7 @@ class DashboardController extends Controller
                 'ustadlk' => $ustadlk,
                 'ustadptr' => $ustadptr,
                 'rumpun' => $rumpun,
+                'jmlRumpun' => $jmlRumpun,
                 'kitabs' => Kitab::all(),
                 'posts' => Post::all(),
                 'nilais' => Nilai::all()]
