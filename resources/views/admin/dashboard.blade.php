@@ -5,70 +5,15 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Welcome back, {{ auth()->user()->name }}</h1>
   </div>
-
-  <div id="chart">
-
-  </div>
-
-  <h2>Daftar Ustad</h2>
-  <div class="table-responsive">
-    <table class="table table-striped table-sm">
-      <a href="/dashboard/ustads">Lihat lebih banyak!</a>
-      <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">Nama</th>
-          <th scope="col">Jenis Kelamin</th>
-          <th scope="col">Nomor Kontak</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($ustads as $ustad)
-        <tr>
-          <td>{{ $loop->iteration }}</td>
-          <td>{{ $ustad->name }}</td>
-          <td>{{ $ustad->jk }}</td>
-          <td> {{ $ustad->no_kontak }} </td>
-          @if ($loop->iteration == 5)
-            @break
-          @endif
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-  </div>
-
-  @can('admin', 'ustad')
-      
-  <h2>Daftar Santri</h2>
-  <div class="table-responsive">
-    <table class="table table-striped table-sm">
-      <a href="/dashboard/santris">Lihat lebih banyak!</a>
-      <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">Nomor Induk</th>
-          <th scope="col">Nama</th>
-          <th scope="col">Jenis Kelamin</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($santris as $santri)
-        <tr>
-          <td>{{ $loop->iteration }}</td>
-          <td> {{ $santri->no_induk }} </td>
-          <td>{{ $santri->name }}</td>
-          <td>{{ $santri->jk }}</td>
-          @if ($loop->iteration == 5)
-            @break
-          @endif
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-  </div>
-  @endcan
   
+  @canany(['admin', 'ustad'])
+    <div id="civitas"></div>
+  @endcanany
+
+  @can('santri')
+    <div id="civitasSantri"></div>
+  @endcan
+
   <h2>Daftar Nilai</h2>
   <div class="table-responsive">
     <table class="table table-striped table-sm">
@@ -157,49 +102,6 @@
     </table>
   </div>
 
+  @include('admin.script')
 
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script>
-    Highcharts.chart('chart', {
-      chart: {
-          type: 'column'
-      },
-      title: {
-          text: 'Rekap Civitas PP Manarul Hasan'
-      },
-      xAxis: {
-          categories: [            
-              'Laki-laki',
-              'Perempuan'
-          ],
-          crosshair: true
-      },
-      yAxis: {
-          title: {
-              useHTML: true,
-              text: 'Jumlah'
-          }
-      },
-      tooltip: {
-          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-          footerFormat: '</table>',
-          shared: true,
-          useHTML: true
-      },
-      plotOptions: {
-          column: {
-              pointPadding: 0.2,
-              borderWidth: 0
-          }
-      },
-      series: [{
-          name: 'Santri',
-          data: [{!! json_encode($santrilk) !!},{!! json_encode($santriptr) !!}]
-      },
-      {
-        name: 'Ustad',
-        data: [{!! json_encode($ustadlk) !!},{!! json_encode($ustadptr) !!}]
-      }]
-  });
-  </script>
 @endsection

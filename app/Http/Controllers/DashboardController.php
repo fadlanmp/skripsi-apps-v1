@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $santriptr = Santri::where('jk','perempuan')->count();
         $ustadlk = Ustad::where('jk','laki-laki')->count();
         $ustadptr = Ustad::where('jk','perempuan')->count();
-        
+
         if(Gate::allows('admin')){
             
             
@@ -43,6 +43,10 @@ class DashboardController extends Controller
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',
+                'santrilk' => $santrilk,
+                'santriptr' => $santriptr,
+                'ustadlk' => $ustadlk,
+                'ustadptr' => $ustadptr,
                 'ustads' => Ustad::all(),
                 'kitabs' => Kitab::all(),
                 'santris' => Santri::all(),
@@ -57,6 +61,8 @@ class DashboardController extends Controller
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',
+                'ustadlk' => $ustadlk,
+                'ustadptr' => $ustadptr,
                 'ustads' => Ustad::all(),
                 'kitabs' => Kitab::all(),
                 'posts' => Post::where('user_id', auth()->user()->id)->get(),
