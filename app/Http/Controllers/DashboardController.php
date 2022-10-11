@@ -29,8 +29,6 @@ class DashboardController extends Controller
         
 
         if(Gate::allows('admin')){
-            dd($rumpun);
-            
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',

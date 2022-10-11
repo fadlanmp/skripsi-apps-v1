@@ -99,9 +99,7 @@
             text: 'Rekap Civitas PP Manarul Hasan'
         },
         xAxis: {
-            categories: [
-                {!! json_encode($rumpun) !!}
-            ],
+            categories:{!! json_encode($rumpun) !!},
             crosshair: true
         },
         yAxis: {
