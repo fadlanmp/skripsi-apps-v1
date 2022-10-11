@@ -6,16 +6,24 @@
     <h1 class="h2">Welcome back, {{ auth()->user()->name }}</h1>
   </div>
   
-  @canany(['admin', 'ustad'])
-    <div id="civitas"></div>
-  @endcanany
+  <div class="row">
+    <div class="col-md-6">
+      @canany(['admin', 'ustad'])
+        <div id="civitas"></div>
+      @endcanany
 
-  @can('santri')
-    <div id="civitasSantri"></div>
-  @endcan
+      @can('santri')
+        <div id="civitasSantri"></div>
+      @endcan
+    </div>
+    <div class="col-md-6">
+      <div id="posts"></div>
+    </div>
+  </div>
+  
 
   <div id="kitab"></div>
-  <div id="posts"></div>
+  
 
   <h2>Daftar Nilai</h2>
   <div class="table-responsive">
