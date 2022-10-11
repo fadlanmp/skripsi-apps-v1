@@ -121,7 +121,7 @@
             }
         },
         series: [{
-            name: 'Santri',
+            name: 'Kitab',
             data: [22,2,2,2,2,2,2,2,2]
         }]
     });

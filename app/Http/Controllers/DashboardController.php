@@ -23,12 +23,15 @@ class DashboardController extends Controller
         $ustadptr = Ustad::where('jk','perempuan')->count();
         $rumpuns = Rumpun::all();
         $rumpun = [];
+        $jmlRumpun = [];
         foreach($rumpuns as $r){
             $rumpun[] = $r->name;
+            $jmlRumpun[] = Kitab::where('rumpun_id', $r->id)->count();
         }
         
 
         if(Gate::allows('admin')){
+            dd($jmlRumpun);
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',
