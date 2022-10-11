@@ -78,6 +78,7 @@ class DashboardController extends Controller
                 $mapel[] = $k->title;
                 $nilai[] = Nilai::where('kitab_id', $k->id, '&&', 'santri_id',$santri_id);
             }
+            dd($mapel);
 
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
