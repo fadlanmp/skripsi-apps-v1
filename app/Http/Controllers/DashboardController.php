@@ -9,6 +9,7 @@ use App\Models\Ustad;
 use App\Models\Santri;
 use App\Models\Nilai;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Database\Eloquent\Builder;
 
 class DashboardController extends Controller
 {
@@ -16,7 +17,7 @@ class DashboardController extends Controller
     {
 
         if(Gate::allows('admin')){
-            $santri = Santri::withCount('jk','laki-laki');
+            $santri = Santri::loadCount('jk');
             dd($santri);
             
             return view('admin.dashboard',[
