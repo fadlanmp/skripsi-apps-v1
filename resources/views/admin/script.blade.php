@@ -124,11 +124,7 @@
         },
         series: [{
             name: 'Santri',
-            data: [{!! json_encode($santrilk) !!},{!! json_encode($santriptr) !!}]
-        },
-        {
-        name: 'Ustad',
-        data: [{!! json_encode($ustadlk) !!},{!! json_encode($ustadptr) !!}]
+            data: [22,2,2,2,2,2,2,2,2]
         }]
     });
 </script>
