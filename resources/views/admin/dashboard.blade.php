@@ -196,7 +196,7 @@
       },
       series: [{
           name: 'Santri',
-          data: [30,50]
+          data: [{{ $santrilk }},{{ santriptr }}]
       },
       {
         name: 'Ustad',
