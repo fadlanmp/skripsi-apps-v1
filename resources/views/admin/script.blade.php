@@ -198,7 +198,7 @@
         },
         series: [{
             name: 'Kitab',
-            data: {{$nilai}}
+            data: {!! json_encode($nilai) !!}
         }]
     });
 </script>
