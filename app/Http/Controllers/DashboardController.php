@@ -47,7 +47,7 @@ class DashboardController extends Controller
                 $nilai[] = Nilai::where('kitab_id', $k->id)->avg('nilai');
             }
 
-            // dd($nilai);
+            dd($posts);
 
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
