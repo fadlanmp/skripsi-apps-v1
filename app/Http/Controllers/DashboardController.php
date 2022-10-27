@@ -44,7 +44,7 @@ class DashboardController extends Controller
             $nilai = [];
             foreach($kitabs as $k){
                 $kitab[] = $k->title;
-                $nilai[] = Nilai::where('kitab_id', $k->id)->avg('nilai');
+                $nilai[] = Nilai::where('kitab_id', $k->id)->withAvg('nilai');
             }
 
             dd($nilai);
