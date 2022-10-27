@@ -32,7 +32,6 @@ class DashboardController extends Controller
         $categories = Category::all();
 
         if(Gate::allows('admin')){
-            $categories = Category::all();
             $post = [];
             $posts = [];
             foreach($categories as $category){
@@ -80,16 +79,12 @@ class DashboardController extends Controller
         }
 
         elseif(Gate::allows('santri')){
-            $kitab = Kitab::all();            
-            $mapel = [];
-            $nilai = [];
-            $santri_id = Santri::where('user_id', auth()->user()->id)->pluck('id');
-            foreach($kitab as $k){
-                $mapel[] = $k->title;
-                $nilai[] = Nilai::where('kitab_id', $k->id, '&&', 'santri_id',$santri_id);
+            $post = [];
+            $posts = [];
+            foreach($categories as $category){
+                $post[] = $category->name;
+                $posts[] = Post::where('category_id', $category->id)->where('user_id', auth()->user()->id)->count();
             }
-            $user = auth()->user()->id;
-            // dd($santri_id);
 
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
@@ -98,12 +93,9 @@ class DashboardController extends Controller
                 'ustadptr' => $ustadptr,
                 'rumpun' => $rumpun,
                 'jmlRumpun' => $jmlRumpun,
-                'mapel' => $mapel,
-                'nilai' => $nilai,
-                'posts' => Post::where('user_id', auth()->user()->id)->get(),
-                $santri_id = Santri::where('user_id', auth()->user()->id)->pluck('id'),
-                'nilais' => Nilai::where('santri_id', $santri_id)->get()]
-            );
+                'post' => $post,
+                'posts' => $posts
+            ]);
         }
     }
 }
