@@ -70,10 +70,7 @@ class DashboardController extends Controller
                 $post[] = $category->name;
                 $posts[] = Post::where('category_id', $category->id)->where('user_id', auth()->user()->id)->count();
             }
-            $ustad_id = Ustad::where('user_id',auth()->user()->id)->first()->pluck('id');
-
-            dd($ustad_id);
-
+            $ustad_id = Ustad::where('user_id',auth()->user()->id)->pluck('id');
             $kitabs = Kitab::all();
             $kitab = [];
             $nilai = [];
@@ -83,7 +80,8 @@ class DashboardController extends Controller
                     $nilai[] = (float) Nilai::where('kitab_id', $k->id)->avg('nilai');
                 }
             }
-
+            dd($nilai);
+            
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',
