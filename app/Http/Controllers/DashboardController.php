@@ -70,20 +70,14 @@ class DashboardController extends Controller
                 $post[] = $category->name;
                 $posts[] = Post::where('category_id', $category->id)->where('user_id', auth()->user()->id)->count();
             }
-            $users = User::all();
-            $ustad = Ustad::all();
-            $santri = Santri::all();
-            $nilais = Nilai::all();
             $ustad_id = Ustad::where('user_id', auth()->user()->id)->pluck('id')->first();
             $kitabs = Kitab::all();
             $kitab = [];
             $nilai = [];
             foreach($kitabs as $k){
-                    $kitab[] = $k->title;
-                    $nilai[] = (float) Nilai::where('kitab_id', $k->id)->where('ustad_id', $ustad_id)->avg('nilai');
-                }
-            dd($kitab, $nilai);
-            
+                $kitab[] = $k->title;
+                $nilai[] = (float) Nilai::where('kitab_id', $k->id)->where('ustad_id', $ustad_id)->avg('nilai');
+            }
 
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
@@ -109,6 +103,14 @@ class DashboardController extends Controller
                 $post[] = $category->name;
                 $posts[] = Post::where('category_id', $category->id)->where('user_id', auth()->user()->id)->count();
             }
+            $santri_id = Santri::where('user_id', auth()->user()->id)->pluck('id')->first();
+            $kitabs = Kitab::all();
+            $kitab = [];
+            $nilai = [];
+            foreach($kitabs as $k){
+                $kitab[] = $k->title;
+                $nilai[] = (float) Nilai::where('kitab_id', $k->id)->where('santri_id', $santri_id)->avg('nilai');
+            }
 
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
@@ -118,7 +120,9 @@ class DashboardController extends Controller
                 'rumpun' => $rumpun,
                 'jmlRumpun' => $jmlRumpun,
                 'post' => $post,
-                'posts' => $posts
+                'posts' => $posts,
+                'kitab' => $kitab,
+                'nilai' => $nilai
             ]);
         }
     }
