@@ -73,16 +73,16 @@ class DashboardController extends Controller
             $users = User::all();
             $ustad = Ustad::all();
             $santri = Santri::all();
-            $n = Nilai::all();
+            $nilais = Nilai::all();
             $ustad_id = Ustad::where('user_id', auth()->user()->id)->pluck('id')->first();
             $kitabs = Kitab::all();
             $kitab = [];
             $nilai = [];
-            foreach($kitabs as $k){
-                    $kitab[] = $k->title;
-                    $nilai[] = (float) Nilai::where('kitab_id', $k->id)->avg('nilai');
-                    dd($n->kitab_id);
+            foreach($nilais as $n){
+                    $kitab[] = Kitab::where('id', $n->kitab_id)->pluck('title')->frist();
+                    $nilai[] = (float) Nilai::where('kitab_id', $n->kitab_id)->avg('nilai');
             }
+            dd($kitab, $nilai);
 
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
