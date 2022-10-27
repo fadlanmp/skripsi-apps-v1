@@ -12,9 +12,9 @@
         <div id="civitas"></div>
       @endcanany
 
-      {{-- @can('santri')
+      @can('santri')
         <div id="civitasSantri"></div>
-      @endcan --}}
+      @endcan
     </div>
     <div class="col-md-6">
       <div id="posts"></div>

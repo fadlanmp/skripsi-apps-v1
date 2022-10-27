@@ -48,7 +48,7 @@
 @endcanany
 
 {{-- chart civitas santri --}}
-{{-- <script>
+<script>
     Highcharts.chart('civitasSantri', {
         chart: {
             type: 'column'
@@ -87,7 +87,7 @@
         data: [{!! json_encode($ustadlk) !!},{!! json_encode($ustadptr) !!}]
         }]
     });
-</script> --}}
+</script>
 
 {{-- chart kitab --}}
 <script>
