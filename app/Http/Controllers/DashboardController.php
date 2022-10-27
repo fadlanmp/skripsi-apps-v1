@@ -70,7 +70,7 @@ class DashboardController extends Controller
                 $post[] = $category->name;
                 $posts[] = Post::where('category_id', $category->id)->where('user_id', auth()->user()->id)->count();
             }
-            $ustad_id = (int) Ustad::where('user_id',auth()->user()->id)->pluck('id');
+            $ustad_id = Ustad::where('user_id', auth()->user()->id)->pluck('id');
             dd($ustad_id);
             $kitabs = Kitab::all();
             $kitab = [];
