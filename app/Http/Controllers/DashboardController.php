@@ -73,17 +73,18 @@ class DashboardController extends Controller
             $users = User::all();
             $ustad = Ustad::all();
             $santri = Santri::all();
+            $n = Nilai::all();
             $ustad_id = Ustad::where('user_id', auth()->user()->id)->pluck('id')->first();
             $kitabs = Kitab::all();
             $kitab = [];
             $nilai = [];
             foreach($kitabs as $k){
-                if($k->ustad_id == $ustad_id){
+                if($n->kitab_id == $k->id && $n->ustad_id == $ustad_id){
                     $kitab[] = $k->title;
                     $nilai[] = (float) Nilai::where('kitab_id', $k->id)->avg('nilai');
                 }
             }
-            dd($users, $ustad, $santri, $k->ustad_id);
+            dd($nilai);
 
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
