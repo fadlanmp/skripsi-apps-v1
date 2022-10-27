@@ -197,7 +197,7 @@
             }
         },
         series: [{
-            name: 'Mapel',
+            name: 'Kitab',
             data: {!! json_encode($nilai) !!}
         }]
     });
