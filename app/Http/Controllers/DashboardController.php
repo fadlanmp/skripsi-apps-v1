@@ -47,8 +47,6 @@ class DashboardController extends Controller
                 $nilai[] = Nilai::where('kitab_id', $k->id)->avg('nilai');
             }
 
-            dd($nilai);
-
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',
@@ -60,8 +58,9 @@ class DashboardController extends Controller
                 'jmlRumpun' => $jmlRumpun,
                 'post' => $post,
                 'posts' => $posts,
-                'nilais' => Nilai::all()]
-            );
+                'kitab' => $kitab,
+                'nilai' => $nilai
+            ]);
         }
 
         elseif(Gate::allows('ustad')){

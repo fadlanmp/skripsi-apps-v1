@@ -166,7 +166,7 @@
 </script>
 
 {{-- chart Nilai --}}
-{{-- <script>
+<script>
     Highcharts.chart('nilai', {
         chart: {
             type: 'column'
@@ -175,7 +175,7 @@
             text: 'Rekap Nilai'
         },
         xAxis: {
-            categories:{!! json_encode($mapel) !!},
+            categories:{!! json_encode($kitab) !!},
             crosshair: true
         },
         yAxis: {
@@ -201,4 +201,4 @@
             data: {!! json_encode($nilai) !!}
         }]
     });
-</script> --}}
+</script>
