@@ -8,13 +8,13 @@
   
   <div class="row">
     <div class="col-md-6">
-      @canany(['admin', 'ustad'])
+      {{-- @canany(['admin', 'ustad'])
         <div id="civitas"></div>
       @endcanany
 
       @can('santri')
         <div id="civitasSantri"></div>
-      @endcan
+      @endcan --}}
     </div>
     <div class="col-md-6">
       <div id="posts"></div>
@@ -22,7 +22,7 @@
   </div>
   
 
-  <div id="kitab"></div>
+  {{-- <div id="kitab"></div> --}}
   {{-- <div id="nilai"></div> --}}
   
 
