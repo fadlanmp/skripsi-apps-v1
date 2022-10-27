@@ -60,7 +60,7 @@ class DashboardController extends Controller
             $posts = [];
             foreach($categories as $category){
                 $post[] = $category->name;
-                $posts[] = Post::where('category_id', $category->id)->count();
+                $posts[] = Post::where('category_id', $category->id)->where('user_id', auth()->user()->id)->count();
             }
 
             dd($posts);
