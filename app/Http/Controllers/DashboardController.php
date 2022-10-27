@@ -82,7 +82,7 @@ class DashboardController extends Controller
                     $kitab[] = Kitab::where('id', $n->kitab_id)->pluck('title')->frist();
                     $nilai[] = (float) Nilai::where('kitab_id', $n->kitab_id)->avg('nilai');
             }
-            dd($kitab, $nilai);
+            dd($kitab);
 
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
