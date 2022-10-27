@@ -29,6 +29,7 @@ class DashboardController extends Controller
             $rumpun[] = $r->name;
             $jmlRumpun[] = Kitab::where('rumpun_id', $r->id)->count();
         }
+        $categories = Category::all();
 
         if(Gate::allows('admin')){
             $categories = Category::all();
@@ -55,16 +56,12 @@ class DashboardController extends Controller
         }
 
         elseif(Gate::allows('ustad')){
-            $categories = Category::all();
             $post = [];
             $posts = [];
             foreach($categories as $category){
                 $post[] = $category->name;
                 $posts[] = Post::where('category_id', $category->id)->where('user_id', auth()->user()->id)->count();
             }
-
-            dd($posts);
-
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',
@@ -74,9 +71,10 @@ class DashboardController extends Controller
                 'ustadptr' => $ustadptr,
                 'rumpun' => $rumpun,
                 'jmlRumpun' => $jmlRumpun,
-                'posts' => Post::where('user_id', auth()->user()->id)->get(),
-                $ustad_id = Ustad::where('user_id', auth()->user()->id)->pluck('id'),
-                'nilais' => Nilai::where("ustad_id", $ustad_id)->get()
+                'post' => $post,
+                'posts' => $posts
+                // $ustad_id = Ustad::where('user_id', auth()->user()->id)->pluck('id'),
+                // 'nilais' => Nilai::where("ustad_id", $ustad_id)->get()
                 ]
             );
         }
