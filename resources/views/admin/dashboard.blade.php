@@ -22,7 +22,7 @@
   </div>
   
 
-  {{-- <div id="kitab"></div> --}}
+  <div id="kitab"></div>
   {{-- <div id="nilai"></div> --}}
   
 

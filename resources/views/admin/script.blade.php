@@ -90,7 +90,7 @@
 </script> --}}
 
 {{-- chart kitab --}}
-{{-- <script>
+<script>
     Highcharts.chart('kitab', {
         chart: {
             type: 'column'
@@ -125,7 +125,7 @@
             data: {!! json_encode($jmlRumpun) !!}
         }]
     });
-</script> --}}
+</script>
 
 {{-- chart Posts --}}
 <script>
