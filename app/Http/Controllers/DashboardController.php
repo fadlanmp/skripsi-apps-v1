@@ -36,7 +36,7 @@ class DashboardController extends Controller
             $post[] = $category->name;
             $posts[] = Post::where('category_id', $category->id)->count();
         }
-        dd($santrilk);
+        dd($posts);
 
         if(Gate::allows('admin')){
             return view('admin.dashboard',[
