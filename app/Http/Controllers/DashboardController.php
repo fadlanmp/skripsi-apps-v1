@@ -42,8 +42,8 @@ class DashboardController extends Controller
             $kitabs = Kitab::all();
             $kitab = [];
             $nilais = [];
-            foreach($kitabs as $kitab){
-                $kitab[] = $kitab->title;
+            foreach($kitabs as $k){
+                $kitab[] = $k->title;
             }
 
             dd($kitab);
