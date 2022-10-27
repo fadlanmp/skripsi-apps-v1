@@ -70,6 +70,20 @@ class DashboardController extends Controller
                 $post[] = $category->name;
                 $posts[] = Post::where('category_id', $category->id)->where('user_id', auth()->user()->id)->count();
             }
+            $ustad_id = Ustad::where('user_id',auth()->user()->id)->pluck('id');
+
+            dd($ustad_id);
+
+            $kitabs = Kitab::all();
+            $kitab = [];
+            $nilai = [];
+            foreach($kitabs as $k){
+                if($k->ustad_id == $ustad_id){
+                    $kitab[] = $k->title;
+                    $nilai[] = (float) Nilai::where('kitab_id', $k->id)->avg('nilai');
+                }
+            }
+
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',
@@ -80,9 +94,9 @@ class DashboardController extends Controller
                 'rumpun' => $rumpun,
                 'jmlRumpun' => $jmlRumpun,
                 'post' => $post,
-                'posts' => $posts
-                // $ustad_id = Ustad::where('user_id', auth()->user()->id)->pluck('id'),
-                // 'nilais' => Nilai::where("ustad_id", $ustad_id)->get()
+                'posts' => $posts,
+                'kitab' => $kitab,
+                'nilai' => $nilai
                 ]
             );
         }
