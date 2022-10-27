@@ -31,6 +31,7 @@ class DashboardController extends Controller
         }
         $categories = Category::all();
 
+
         if(Gate::allows('admin')){
             $post = [];
             $posts = [];
@@ -38,6 +39,14 @@ class DashboardController extends Controller
                 $post[] = $category->name;
                 $posts[] = Post::where('category_id', $category->id)->count();
             }
+            $kitabs = Kitab::all();
+            $kitab = [];
+            $nilais = [];
+            foreach($kitabs as $kitab){
+                $kitab[] = $kitab->title;
+            }
+
+            dd($kitab);
 
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
