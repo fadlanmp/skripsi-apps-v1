@@ -81,7 +81,7 @@ class DashboardController extends Controller
                 $nilai[] = Nilai::where('kitab_id', $k->id, '&&', 'santri_id',$santri_id);
             }
             $user = auth()->user()->id;
-            dd($santri_id);
+            // dd($santri_id);
 
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
