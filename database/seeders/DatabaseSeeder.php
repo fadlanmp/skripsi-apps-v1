@@ -38,35 +38,35 @@ class DatabaseSeeder extends Seeder
             'role_id' => 1,
             'password' => bcrypt('12345')
         ]);
-        User::create([
-            'name' => 'Ustad',
-            'username' => 'ustad1',
-            'role_id' => 2,
-            'password' => bcrypt('12345')
-        ]);
-        User::create([
-            'name' => 'Santri',
-            'username' => 'santri',
-            'role_id' => 3,
-            'password' => bcrypt('12345')
-        ]);
-        User::factory(5)->create();
+        // User::create([
+        //     'name' => 'Ustad',
+        //     'username' => 'ustad1',
+        //     'role_id' => 2,
+        //     'password' => bcrypt('12345')
+        // ]);
+        // User::create([
+        //     'name' => 'Santri',
+        //     'username' => 'santri',
+        //     'role_id' => 3,
+        //     'password' => bcrypt('12345')
+        // ]);
+        // // User::factory(5)->create();
 
         // Ustad uji coba
-        Ustad::create([
-            'user_id' => '2',
-            'name' => 'ustad',
-            'jk' => 'laki-laki',
-            'no_kontak' => '081234567890'
-        ]);
+        // Ustad::create([
+        //     'user_id' => '2',
+        //     'name' => 'ustad',
+        //     'jk' => 'laki-laki',
+        //     'no_kontak' => '081234567890'
+        // ]);
 
         // Santri uji coba
-        Santri::create([
-            'user_id' => '3',
-            'name' => 'santri',
-            'jk' => 'laki-laki',
-            'no_induk' => '2022.01.001'
-        ]);
+        // Santri::create([
+        //     'user_id' => '3',
+        //     'name' => 'santri',
+        //     'jk' => 'laki-laki',
+        //     'no_induk' => '2022.01.001'
+        // ]);
 
         //kategori postingan
         Category::create([
@@ -131,7 +131,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         //contoh postingan
-        Post::factory(20)->create();
+        // Post::factory(20)->create();
 
         //contoh kitab
         Kitab::create([
