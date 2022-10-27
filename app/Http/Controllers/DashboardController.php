@@ -79,7 +79,7 @@ class DashboardController extends Controller
             $kitab = [];
             $nilai = [];
             foreach($kitabs as $k){
-                if($n->kitab_id == $k->id && $n->ustad_id == $ustad_id){
+                if($n->kitab_id == $k->id){
                     $kitab[] = $k->title;
                     $nilai[] = (float) Nilai::where('kitab_id', $k->id)->avg('nilai');
                 }
