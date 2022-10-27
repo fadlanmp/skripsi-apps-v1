@@ -26,7 +26,7 @@
   <div id="nilai"></div>
   
 
-  <h2>Daftar Nilai</h2>
+  {{-- <h2>Daftar Nilai</h2>
   <div class="table-responsive">
     <table class="table table-striped table-sm">
       <a href="/dashboard/nilais">Lihat lebih banyak!</a>
@@ -56,7 +56,7 @@
         @endforeach
       </tbody>
     </table>
-  </div>
+  </div> --}}
   {{-- <h2>Blog</h2>
   <div class="table-responsive">
     <table class="table table-striped table-sm">
