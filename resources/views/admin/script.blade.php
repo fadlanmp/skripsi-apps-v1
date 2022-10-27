@@ -48,7 +48,7 @@
 @endcanany
 
 {{-- chart civitas santri --}}
-<script>
+{{-- <script>
     Highcharts.chart('civitasSantri', {
         chart: {
             type: 'column'
@@ -87,10 +87,10 @@
         data: [{!! json_encode($ustadlk) !!},{!! json_encode($ustadptr) !!}]
         }]
     });
-</script>
+</script> --}}
 
 {{-- chart kitab --}}
-<script>
+{{-- <script>
     Highcharts.chart('kitab', {
         chart: {
             type: 'column'
@@ -125,10 +125,10 @@
             data: {!! json_encode($jmlRumpun) !!}
         }]
     });
-</script>
+</script> --}}
 
 {{-- chart Posts --}}
-<script>
+{{-- <script>
     Highcharts.chart('posts', {
         chart: {
             type: 'column'
@@ -163,10 +163,10 @@
             data: {!! json_encode($posts) !!}
         }]
     });
-</script>
+</script> --}}
 
 {{-- chart Nilai --}}
-<script>
+{{-- <script>
     Highcharts.chart('nilai', {
         chart: {
             type: 'column'
@@ -201,4 +201,4 @@
             data: {!! json_encode($nilai) !!}
         }]
     });
-</script>
+</script> --}}
