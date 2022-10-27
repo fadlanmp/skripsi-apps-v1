@@ -128,7 +128,7 @@
 </script> --}}
 
 {{-- chart Posts --}}
-{{-- <script>
+<script>
     Highcharts.chart('posts', {
         chart: {
             type: 'column'
@@ -163,7 +163,7 @@
             data: {!! json_encode($posts) !!}
         }]
     });
-</script> --}}
+</script>
 
 {{-- chart Nilai --}}
 {{-- <script>
