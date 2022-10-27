@@ -17,7 +17,7 @@
       @endcan --}}
     </div>
     <div class="col-md-6">
-      <div id="posts"></div>
+      {{-- <div id="posts"></div> --}}
     </div>
   </div>
   
