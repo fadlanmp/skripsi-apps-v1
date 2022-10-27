@@ -79,12 +79,10 @@ class DashboardController extends Controller
             $kitab = [];
             $nilai = [];
             foreach($kitabs as $k){
-                if($n->kitab_id == $k->id){
                     $kitab[] = $k->title;
                     $nilai[] = (float) Nilai::where('kitab_id', $k->id)->avg('nilai');
-                }
+                    dd($k->id);
             }
-            dd($nilai);
 
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
