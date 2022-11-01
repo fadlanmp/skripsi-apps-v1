@@ -17,11 +17,13 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
+        // kebutuhan data untuk dapat login
         $credentials  = $request->validate([
             'username' => 'required',
             'password' => 'required'
         ]);
 
+        // penentuan role dari user
         if (Auth::attempt($credentials, ['role_id' => 1])) {
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
@@ -29,11 +31,13 @@ class LoginController extends Controller
         elseif (Auth::attempt($credentials, ['role_id' => 2])){
             $request->session()->regenerate();
             return redirect()->intended('/dashboard-ustad');
-        }elseif (Auth::attempt($credentials, ['role_id' => 3])){
+        }
+        elseif (Auth::attempt($credentials, ['role_id' => 3])){
             $request->session()->regenerate();
             return redirect()->intended('/dashboard-santri');
         }
 
+        // apabila tidak memenuhi syarat maka login gagal
         return back()->with('loginError','Login failed!');
     }
 

@@ -22,6 +22,12 @@ class DashboardController extends Controller
         $santriptr = Santri::where('jk','perempuan')->count();
         $ustadlk = Ustad::where('jk','laki-laki')->count();
         $ustadptr = Ustad::where('jk','perempuan')->count();
+        $categories = Category::all();
+        $post = [];
+        $posts = [];
+        $kitabs = Kitab::all();
+        $kitab = [];
+        $nilai = [];
         $rumpuns = Rumpun::all();
         $rumpun = [];
         $jmlRumpun = [];
@@ -29,24 +35,17 @@ class DashboardController extends Controller
             $rumpun[] = $r->name;
             $jmlRumpun[] = Kitab::where('rumpun_id', $r->id)->count();
         }
-        $categories = Category::all();
 
-
+        // pembagian role untuk menampilkan data pada dashboard
         if(Gate::allows('admin')){
-            $post = [];
-            $posts = [];
             foreach($categories as $category){
                 $post[] = $category->name;
                 $posts[] = Post::where('category_id', $category->id)->count();
             }
-            $kitabs = Kitab::all();
-            $kitab = [];
-            $nilai = [];
             foreach($kitabs as $k){
                 $kitab[] = $k->title;
                 $nilai[] = (float) Nilai::where('kitab_id', $k->id)->avg('nilai');
             }
-
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',
@@ -64,21 +63,15 @@ class DashboardController extends Controller
         }
 
         elseif(Gate::allows('ustad')){
-            $post = [];
-            $posts = [];
             foreach($categories as $category){
                 $post[] = $category->name;
                 $posts[] = Post::where('category_id', $category->id)->where('user_id', auth()->user()->id)->count();
             }
             $ustad_id = Ustad::where('user_id', auth()->user()->id)->pluck('id')->first();
-            $kitabs = Kitab::all();
-            $kitab = [];
-            $nilai = [];
             foreach($kitabs as $k){
                 $kitab[] = $k->title;
                 $nilai[] = (float) Nilai::where('kitab_id', $k->id)->where('ustad_id', $ustad_id)->avg('nilai');
             }
-
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',
@@ -97,21 +90,15 @@ class DashboardController extends Controller
         }
 
         elseif(Gate::allows('santri')){
-            $post = [];
-            $posts = [];
             foreach($categories as $category){
                 $post[] = $category->name;
                 $posts[] = Post::where('category_id', $category->id)->where('user_id', auth()->user()->id)->count();
             }
             $santri_id = Santri::where('user_id', auth()->user()->id)->pluck('id')->first();
-            $kitabs = Kitab::all();
-            $kitab = [];
-            $nilai = [];
             foreach($kitabs as $k){
                 $kitab[] = $k->title;
                 $nilai[] = (float) Nilai::where('kitab_id', $k->id)->where('santri_id', $santri_id)->avg('nilai');
             }
-
             return view('admin.dashboard',[
                 'title' => 'Dashboard',
                 'active' => 'home',
