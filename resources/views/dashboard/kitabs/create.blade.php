@@ -9,7 +9,7 @@
         @csrf
         <div class="mb-3">
           <label for="title" class="form-label">Nama / Judul Kitab</label>
-          <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" autofocus required value="{{ old('title') }}">
+          <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" autofocus required value="{{ old('title') }}" placeholder="Silakan isi nama / judul kitab">
           @error('title')
           <div class="invalid-feedback">
             {{ $message }}
@@ -39,7 +39,7 @@
         </div>
         <div class="mb-3">
           <label for="pengarang" class="form-label">Pengarang Kitab</label>
-          <input type="text" class="form-control @error('pengarang') is-invalid @enderror" id="pengarang" name="pengarang" autofocus required value="{{ old('pengarang') }}">
+          <input type="text" class="form-control @error('pengarang') is-invalid @enderror" id="pengarang" name="pengarang" autofocus required value="{{ old('pengarang') }}" placeholder="Silakan isi pengarang kitab">
           @error('pengarang')
           <div class="invalid-feedback">
             {{ $message }}

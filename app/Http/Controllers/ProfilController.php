@@ -12,14 +12,15 @@ class ProfilController extends Controller
 {
     public function index(Ustad $ustad, Santri $santri)
     {
-        if(Gate::allows('santri'))
+        // pembagian role user
+        if(Gate::allows('santri')) // role santri
         {
             return view('dashboard.profil.profil-santri',[
                 'santri'  => $santri,
-        ]);
+            ]);
         }
         
-        else
+        else // role ustad
         {
             return view('dashboard.profil.profil-ustad',[
                 'ustad' => $ustad

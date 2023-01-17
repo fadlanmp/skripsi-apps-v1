@@ -18,22 +18,13 @@
         </div>
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}" placeholder="Silakan isi nama di sini" required>
+          <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}" placeholder="Silakan isi username di sini" required>
           @error('username')
           <div class="invalid-feedback">
             {{ $message }}
           </div>
           @enderror
         </div>
-        {{-- <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" required>
-          @error('password')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
-        </div> --}}
         <div class="mb-3">
           <label for="jk" class="form-label">Jenis Kelamin</label>
           <select class="form-select" id="jk" name="jk" aria-label="Default select example" value="{{ old('jk') }}">
@@ -43,7 +34,7 @@
         </div>
         <div class="mb-3">
             <label for="no_kontak" class="form-label">Nomor Kontak</label>
-            <input type="text" class="form-control @error('no_kontak') is-invalid @enderror" id="no_kontak" name="no_kontak"  value="{{ old('no_kontak') }}">
+            <input type="text" class="form-control @error('no_kontak') is-invalid @enderror" id="no_kontak" name="no_kontak"  value="{{ old('no_kontak') }}" placeholder="Silakan isi nomor kontak di sini">
             @error('no_kontak')
           <div class="invalid-feedback">
             {{ $message }}

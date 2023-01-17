@@ -37,7 +37,7 @@
 
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}" placeholder="Silakan isi nama di sini" required>
+          <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}" placeholder="Silakan isi username di sini" required>
           @error('username')
           <div class="invalid-feedback">
             {{ $message }}

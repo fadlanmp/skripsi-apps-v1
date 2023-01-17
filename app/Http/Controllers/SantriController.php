@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Santri;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Nilai;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -127,6 +129,8 @@ class SantriController extends Controller
      */
     public function destroy(Santri $santri)
     {
+        Nilai::where('santri_id', $santri->id)->delete();
+        Post::where('user_id', $santri->user_id)->delete();
         Santri::destroy($santri->id);
         User::destroy($santri->user_id);
         return redirect('/dashboard/santris')->with('success', 'Profil santri dihapus!');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kitab;
 use App\Models\Rumpun;
+use App\Models\Nilai;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Storage;
@@ -147,6 +148,7 @@ class DashboardKitabController extends Controller
         //     Storage::delete($kitab->image);
         // }
 
+        Nilai::where('kitab_id', $kitab->id)->delete();
         Kitab::destroy($kitab->id);
         return redirect('/dashboard/kitabs')->with('success', 'Kitab telah dihapus!');
     }

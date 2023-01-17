@@ -19,25 +19,19 @@ class NilaiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        if(Gate::allows('admin'))
-        {
+    public function index(){
+        if(Gate::allows('admin')){
             return view('dashboard.nilais.index', [
                 'nilais' => Nilai::all()
             ]);
         }
-        
-        elseif(Gate::allows('ustad'))
-        {
+        elseif(Gate::allows('ustad')){
             return view('dashboard.nilais.index', [
                 $ustad_id = Ustad::where('user_id', auth()->user()->id)->pluck('id'),
                 'nilais' => Nilai::where("ustad_id", $ustad_id)->get()
             ]);
         }
-        
-        else
-        {
+        else{
             return view('dashboard.nilais.index', [
                 $santri_id = Santri::where('user_id', auth()->user()->id)->pluck('id'),
                 'nilais' => Nilai::where('santri_id', $santri_id)->get()
@@ -135,10 +129,8 @@ class NilaiController extends Controller
      * @param  \App\Models\Nilai  $nilai
      * @return \Illuminate\Http\Response
      */
-    public function edit(Nilai $nilai)
-    {
-        if(Gate::allows('admin'))
-        {
+    public function edit(Nilai $nilai){
+        if(Gate::allows('admin')){
             return view('dashboard.nilais.edit',[
                 'nilai' => $nilai,
                 'rumpuns' => Rumpun::all(),
@@ -147,9 +139,7 @@ class NilaiController extends Controller
                 'kitabs' => Kitab::all()
             ]);
         }
-        
-        elseif(Gate::allows('ustad'))
-        {
+        elseif(Gate::allows('ustad')){
             return view('dashboard.nilais.edit',[
                 'nilai' => $nilai,
                 'rumpuns' => Rumpun::all(),
@@ -157,9 +147,7 @@ class NilaiController extends Controller
                 'kitabs' => Kitab::all()
             ]);
         }
-        
-        else
-        {
+        else{
             return view('dashboard.nilais.index', [
                 $santri_id = Santri::where('user_id', auth()->user()->id)->pluck('id'),
                 'nilais' => Nilai::where('santri_id', $santri_id)->get()

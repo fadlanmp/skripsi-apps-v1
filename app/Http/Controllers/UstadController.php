@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Ustad;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Nilai;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 // use Illuminate\Support\Facades\DB;
@@ -152,8 +154,13 @@ class UstadController extends Controller
         //     Storage::delete($ustad->image);
         // }
 
+
+        Nilai::where('ustad_id', $ustad->id)->delete();
+        Post::where('user_id', $ustad->user_id)->delete();
         Ustad::destroy($ustad->id);
         User::destroy($ustad->user_id);
+        
+
         return redirect('/dashboard/ustads')->with('success', 'Profil ustad dihapus!');
     }
 
