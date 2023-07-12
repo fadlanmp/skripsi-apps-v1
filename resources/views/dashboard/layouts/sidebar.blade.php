@@ -4,7 +4,7 @@
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="/dashboard">
             <span data-feather="home"></span>
-            Dashboard
+            Dasbor
           </a>
         </li>
         @canany(['ustad', 'santri'])
@@ -19,7 +19,7 @@
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard/ustads') ? 'active' : '' }}" href="/dashboard/ustads">
             <span data-feather="users"></span>
-            Daftar Ustad
+            Daftar Ustaz
           </a>
         </li>
         @canany(['admin', 'ustad'])

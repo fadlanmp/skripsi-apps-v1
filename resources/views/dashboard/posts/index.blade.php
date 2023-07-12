@@ -3,7 +3,7 @@
 @section('container')
     
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">My Posts</h1>
+    <h1 class="h2">Daftar Blog</h1>
 </div>
 
 @if (session()->has('success'))
@@ -13,7 +13,7 @@
 @endif
 
   <div class="table-responsive col-md">
-    <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Create new post</a>
+    <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Buat blog baru</a>
     <table class="table table-striped table table-bordered align-middle">
       <thead>
         <tr class="text-center">
@@ -22,7 +22,7 @@
           <th scope="col">Judul</th>
           <th scope="col">Penulis</th>
           <th scope="col">Tanggal</th>
-          <th scope="col">Action</th>
+          <th scope="col">Aksi</th>
 
         </tr>
       </thead>
@@ -40,7 +40,7 @@
             <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
             @method('delete')
             @csrf
-            <button class="badge btn-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></button>
+            <button class="badge btn-danger border-0" onclick="return confirm('Apakah anda yakin?')"><span data-feather="x-circle"></span></button>
             </form>
           </td>
         </tr>

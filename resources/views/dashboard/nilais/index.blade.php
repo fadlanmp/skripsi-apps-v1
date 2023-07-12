@@ -20,19 +20,19 @@
       <thead>
         <tr class="text-center">
           <th scope="col">No</th>
-          <th scope="col">Rumpun</th>
+          
           <th scope="col">Nama Kitab</th>
           <th scope="col">Pengajar</th>
           <th scope="col">Nama Santri</th>
           <th scope="col">Nilai</th>
-          <th scope="col">Action</th>
+          <th scope="col">Aksi</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($nilais as $nilai)
         <tr class="text-center">
           <td>{{ $loop->iteration }}</td>
-          <td>{{ $nilai->rumpun->name }}</td>
+          
           <td>{{ $nilai->kitab->title }}</td>
           <td>{{ $nilai->ustad->name }}</td>
           <td> {{ $nilai->santri->name }} </td>
@@ -44,7 +44,7 @@
             <form action="/dashboard/nilais/{{ $nilai->id }}" method="post" class="d-inline">
             @method('delete')
             @csrf
-            <button class="badge btn-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></button>
+            <button class="badge btn-danger border-0" onclick="return confirm('Apakah anda yakin?')"><span data-feather="x-circle"></span></button>
             </form>
             @endcanany
           </td>

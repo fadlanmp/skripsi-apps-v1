@@ -21,7 +21,7 @@
 
       <main class="form-signin text-center">
           <img class="mb-2" src="img/logo.png" alt="" width="72" >
-          <h1 class="h3 mb-3 fw-normal text-center">Please login</h1>
+          <h1 class="h3 mb-3 fw-normal text-center">Silakan masuk!</h1>
           <form action="/login" method="post">
             @csrf
             <div class="form-floating">
@@ -37,7 +37,7 @@
               <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
               <label for="password">Password</label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Masuk</button>
           </form>
           <small>Belum terdaftar? Silakan  <a href="mailto:manarulhasankotabanjar@gmail.com">hubungin operator</a></small>
         </main>

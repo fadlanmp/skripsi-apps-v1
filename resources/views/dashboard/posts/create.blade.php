@@ -2,14 +2,14 @@
 
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Create New Post</h1>
+    <h1 class="h2">Buat blog baru</h1>
 </div>
 <div class="col-md-8">
     <form method="post" action="/dashboard/posts" class="mb-5" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" autofocus required value="{{ old('title') }}" placeholder="Silakan isi title / judul postingan">
+          <label for="title" class="form-label">Judul Blog</label>
+          <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" autofocus required value="{{ old('title') }}" placeholder="Silakan isi judul blog">
           @error('title')
           <div class="invalid-feedback">
             {{ $message }}
@@ -26,7 +26,7 @@
           @enderror
         </div>
         <div class="mb-3">
-          <label for="category" class="form-label">Category</label>
+          <label for="category" class="form-label">Kategori</label>
           <select class="form-select" name="category_id">
             @foreach ($categories as $category)
             @if (old('category_id') == $category->id)
@@ -38,7 +38,7 @@
           </select>
         </div>
         <div class="mb-3">
-          <label for="image" class="form-label @error('image') is-invalid @enderror">Post Image</label>
+          <label for="image" class="form-label @error('image') is-invalid @enderror">Gambar</label>
           <img class="img-preview img-fluid mb-5 col-sm-5">
           <input class="form-control" type="file" id="image" name="image" onchange="previewImage()">
           @error('image')
@@ -48,7 +48,7 @@
           @enderror
         </div>
         <div class="mb-3">
-          <label for="body" class="form-label">Body</label>
+          <label for="body" class="form-label">Isi</label>
           @error('body')
               <p class="text-danger">{{ $message }}</p>
           @enderror
@@ -56,7 +56,7 @@
           <trix-editor input="body"></trix-editor>
         </div>
 
-        <button type="submit" class="btn btn-primary">Create Post</button>
+        <button type="submit" class="btn btn-primary">Buat Blog</button>
       </form>
 </div>
 

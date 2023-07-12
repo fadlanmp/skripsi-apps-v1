@@ -4,16 +4,16 @@
 <div class="container pt-3">
     <div class="row ">
         <div class="col-md-9 ">
-            <h2 class="mb-5">Profil Ustad</h2>
+            <h2 class="mb-5">Profil Ustaz</h2>
 
-            <a href="/dashboard/ustads" class="btn btn-success mb-2"><span data-feather="arrow-left"></span> Kembali ke daftar ustad</a>
+            <a href="/dashboard/ustads" class="btn btn-success mb-2"><span data-feather="arrow-left"></span> Kembali ke daftar ustaz</a>
             @canany(['admin', 'ustad'])
                 
             {{-- <a href="/dashboard/password/{{ $ustad->user_id }}" class="btn btn-info mb-2"><span data-feather="edit"></span> Edit Password</a> --}}
             @endcanany
 
             @can('admin')
-                <a href="/dashboard/ustads/{{ $ustad->id }}/edit" class="btn btn-primary mb-2"><span data-feather="edit"></span> Edit Profil</a>
+                <a href="/dashboard/ustads/{{ $ustad->id }}/edit" class="btn btn-primary mb-2"><span data-feather="edit"></span> Perbaharui Profil</a>
 
 
                 {{-- <form action="/dashboard/ustads/{{ $ustad->id }}/reset" method="post" class="d-inline">
@@ -24,7 +24,7 @@
                 <form action="/dashboard/ustads/{{ $ustad->id }}" method="post" class="d-inline">
                     @method('delete')
                     @csrf
-                    <button class="btn btn-danger mb-2" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span> Delete</button>
+                    <button class="btn btn-danger mb-2" onclick="return confirm('Apakah anda yakin?')"><span data-feather="x-circle"></span> Hapus Profil Ustaz</button>
                 </form>
                 
             @endcan
@@ -35,6 +35,13 @@
                     <th scope="row">:</th>
                     <td>{{ $ustad->name }}</td>
                 </tr>
+
+                <tr>
+                    <th scope="row">Kitab yang diampu</th>
+                    <th scope="row">:</th>
+                    <td>{{ $ustad->kitab->title }}</td>
+                </tr>
+
                 @canany(['admin', 'ustad'])
                     
                 <tr>

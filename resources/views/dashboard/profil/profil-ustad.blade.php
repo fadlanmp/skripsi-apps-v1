@@ -4,7 +4,7 @@
 <div class="container pt-3">
     <div class="row ">
         <div class="col-md-8 ">
-            <h2 class="mb-5">Profil Ustad</h2>
+            <h2 class="mb-5">Profil Ustaz</h2>
 
             @if (session()->has('success'))
                 <div class="alert alert-success col-md-8" role="alert">

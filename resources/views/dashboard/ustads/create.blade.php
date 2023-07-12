@@ -2,7 +2,7 @@
 
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Tambah Ustad</h1>
+    <h1 class="h2">Tambah Ustaz</h1>
 </div>
 <div class="col-md-8">
     <form method="post" action="/dashboard/ustads" class="mb-5" enctype="multipart/form-data">
@@ -41,7 +41,24 @@
           </div>
           @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Tambah Ustad</button>
+        <div class="mb-3">
+          <label for="kitab" class="form-label">Nama Kitab</label>
+          <select class="form-select @error('kitab_id') is-invalid @enderror" name="kitab_id">
+            @foreach ($kitabs as $kitab)
+            @if (old('kitab_id') == $kitab->id)
+            <option value="{{ $kitab->id }}" selected>{{ $kitab->title }}</option>
+            @else
+            <option value="{{ $kitab->id }}">{{ $kitab->title }}</option>
+            @endif
+            @endforeach
+          </select>
+          @error('kitab_id')
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
+          @enderror
+        </div>
+        <button type="submit" class="btn btn-primary">Tambah Ustaz</button>
       </form>
 </div>
 

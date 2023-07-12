@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Ustad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
 
 
 class NilaiController extends Controller
@@ -44,11 +45,13 @@ class NilaiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Nilai $nilai, Kitab $kitab)
     {
         if(Gate::allows('admin'))
         {
             return view('dashboard.nilais.create',[
+                'nilai' => $nilai,
+                'kitab' => $kitab,
                 'rumpuns' => Rumpun::all(),
                 'santris' => Santri::all(),
                 'ustads' => Ustad::all(),
@@ -84,24 +87,33 @@ class NilaiController extends Controller
     {
         if(Gate::allows('admin'))
         {
+            
             $validatedData = $request->validate([
-                'rumpun_id' => 'required',
+                // 'rumpun_id' => 'required',
                 'santri_id' => 'required',
-                'kitab_id' => 'required',
+                // 'kitab_id' => 'required',
                 'ustad_id' => 'required',
                 'nilai' => 'required|integer'
             ]);
+
+            // $validatedData['rumpun_id'] = '1';
+            $kosong = DB::table('ustads')->where('id', $validatedData['ustad_id'])->first();
+            $validatedData['kitab_id'] = $kosong->kitab_id;
+
+            // dd($validatedData);
         }
         else
         {
             $validatedData = $request->validate([
-                'rumpun_id' => 'required',
+                // 'rumpun_id' => 'required',
                 'santri_id' => 'required',
-                'kitab_id' => 'required',
+                // 'kitab_id' => 'required',
                 'nilai' => 'required|integer'
             ]);
             
             $validatedData['ustad_id'] = Ustad::where('user_id', auth()->user()->id)->first()->id;
+            $validatedData['kitab_id'] = Ustad::where('user_id', auth()->user()->id)->first()->kitab_id;
+            // dd($validatedData);
         }
 
         Nilai::create($validatedData);
@@ -167,12 +179,14 @@ class NilaiController extends Controller
         if(Gate::allows('admin'))
         {
             $rules = [
-                'rumpun_id' => 'required',
+                // 'rumpun_id' => 'required',
                 'santri_id' => 'required',
-                'kitab_id' => 'required',
+                // 'kitab_id' => 'required',
                 'ustad_id' => 'required',
                 'nilai' => 'required|integer'
             ];
+            $kosong = DB::table('ustads')->where('id', $rules['ustad_id'])->first();
+            $rules['kitab_id'] = $kosong->kitab_id;
         }
         
         elseif(Gate::allows('ustad'))

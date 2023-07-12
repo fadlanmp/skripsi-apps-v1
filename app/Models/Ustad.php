@@ -15,6 +15,11 @@ class Ustad extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function kitab()
+    {
+        return $this->belongsTo(Kitab::class);
+    }
+
     public function nilai()
     {
         return $this->hasMany(Nilai::class);

@@ -2,14 +2,14 @@
 
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Edit Post</h1>
+    <h1 class="h2">Perbaharui Blog</h1>
 </div>
 <div class="col-md-8">
     <form method="post" action="/dashboard/posts/{{ $post->slug }}" class="mb-5" enctype="multipart/form-data">
       @method('put')  
       @csrf
         <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
+          <label for="title" class="form-label">Judul Blog</label>
           <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" autofocus required value="{{ old('title', $post->title) }}">
           @error('title')
           <div class="invalid-feedback">
@@ -27,7 +27,7 @@
           @enderror
         </div>
         <div class="mb-3">
-          <label for="category" class="form-label">Category</label>
+          <label for="category" class="form-label">Kategori</label>
           <select class="form-select" name="category_id">
             @foreach ($categories as $category)
             @if (old('category_id', $post->category_id) == $category->id)
@@ -39,10 +39,10 @@
           </select>
         </div>
         <div class="mb-3">
-          <label for="image" class="form-label @error('image') is-invalid @enderror">Post Image</label>
+          <label for="image" class="form-label @error('image') is-invalid @enderror">Gambar</label>
           <input type="hidden" name="oldImage" value="{{ $post->image }}">
           @if ($post->image)
-            <img src="{{$post->image}}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+            <img src="{{asset('storage/' . $post->image)}}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
           @else
             <img class="img-preview img-fluid mb-3 col-sm-5">
           @endif
@@ -54,7 +54,7 @@
           @enderror
         </div>
         <div class="mb-3">
-          <label for="body" class="form-label">Body</label>
+          <label for="body" class="form-label">Isi</label>
           @error('body')
               <p class="text-danger">{{ $message }}</p>
           @enderror
@@ -62,7 +62,7 @@
           <trix-editor input="body"></trix-editor>
         </div>
 
-        <button type="submit" class="btn btn-primary">Edit Post</button>
+        <button type="submit" class="btn btn-primary">Perbaharui</button>
       </form>
 </div>
 

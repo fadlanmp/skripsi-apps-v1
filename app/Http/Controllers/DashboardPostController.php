@@ -56,6 +56,7 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
@@ -65,7 +66,7 @@ class DashboardPostController extends Controller
         ]);
 
         if($request->file('image')){
-            $validatedData['image'] = $request->file('image')->storeOnCloudinary('blog')->getSecurePath();
+            $validatedData['image'] = $request->file('image')->store('gambar-blog');
         }
 
         $validatedData['user_id'] = auth()->user()->id;
@@ -73,7 +74,7 @@ class DashboardPostController extends Controller
 
         Post::create($validatedData);
 
-        return redirect('/dashboard/posts')->with('success', 'New post has been added!');
+        return redirect('/dashboard/posts')->with('success', 'Blog baru berhasil ditambahkan!');
     }
 
     /**
@@ -132,7 +133,7 @@ class DashboardPostController extends Controller
                 Storage::delete($request->oldImage);
             }
 
-            $validatedData['image'] = $request->file('image')->storeOnCloudinary('blog')->getSecurePath();
+            $validatedData['image'] = $request->file('image')->store('gambar-blog');
         }
         
         $validatedData['user_id'] = auth()->user()->id;
@@ -141,7 +142,7 @@ class DashboardPostController extends Controller
         Post::where('id', $post->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/posts')->with('success', 'Post has been Updated!');
+        return redirect('/dashboard/posts')->with('success', 'Blog berhasil diperbaharui!');
     }
 
     /**
@@ -157,7 +158,7 @@ class DashboardPostController extends Controller
         }
 
         Post::destroy($post->id);
-        return redirect('/dashboard/posts')->with('success', 'Post has been deleted!');
+        return redirect('/dashboard/posts')->with('success', 'Blog berhasil dihapus!');
     }
 
     public function checkSlug(Request $request)

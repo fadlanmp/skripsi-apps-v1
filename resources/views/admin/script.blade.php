@@ -40,7 +40,7 @@
             data: [{!! json_encode($santrilk) !!},{!! json_encode($santriptr) !!}]
         },
         {
-        name: 'Ustad',
+        name: 'Ustaz',
         data: [{!! json_encode($ustadlk) !!},{!! json_encode($ustadptr) !!}]
         }]
     });
@@ -54,7 +54,7 @@
             type: 'column'
         },
         title: {
-            text: 'Rekap Ustad PP Manarul Hasan'
+            text: 'Rekap Ustaz PP Manarul Hasan'
         },
         xAxis: {
             categories: [
@@ -83,7 +83,7 @@
         },
         series: [
         {
-        name: 'Ustad',
+        name: 'Ustaz',
         data: [{!! json_encode($ustadlk) !!},{!! json_encode($ustadptr) !!}]
         }]
     });
@@ -134,7 +134,7 @@
             type: 'column'
         },
         title: {
-            text: 'Rekap Postingan/Blog'
+            text: 'Rekap Blog'
         },
         xAxis: {
             categories:{!! json_encode($post) !!},
@@ -159,7 +159,7 @@
             }
         },
         series: [{
-            name: 'Post',
+            name: 'Blog',
             data: {!! json_encode($posts) !!}
         }]
     });

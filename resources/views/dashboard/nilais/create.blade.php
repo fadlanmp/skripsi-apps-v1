@@ -7,47 +7,23 @@
 <div class="col-md-8">
     <form method="post" action="/dashboard/nilais" class="mb-5">
         @csrf
-        <div class="mb-3">
-          <label for="rumpun" class="form-label">Rumpun</label>
-          <select class="form-select" name="rumpun_id">
-            @foreach ($rumpuns as $rumpun)
-            @if (old('rumpun_id') == $rumpun->id)
-            <option value="{{ $rumpun->id }}" selected>{{ $rumpun->name }}</option>
-            @else
-            <option value="{{ $rumpun->id }}">{{ $rumpun->name }}</option>
-            @endif
-            @endforeach
-          </select>
-        </div>
-
-        <div class="mb-3">
-          <label for="kitab" class="form-label">Nama Kitab</label>
-          <select class="form-select" name="kitab_id">
-            @foreach ($kitabs as $kitab)
-            @if (old('kitab_id') == $kitab->id)
-            <option value="{{ $kitab->id }}" selected>{{ $kitab->title }}</option>
-            @else
-            <option value="{{ $kitab->id }}">{{ $kitab->title }}</option>
-            @endif
-            @endforeach
-          </select>
-        </div>
-
+        
         @can('admin')
           <div class="mb-3">
             <label for="ustad" class="form-label">Pengajar</label>
-            <select class="form-select" name="ustad_id">
+            <select class="form-select" name="ustad_id" id="ustad">
               @foreach ($ustads as $ustad)
               @if (old('id') == $ustad->id)
-              <option value="{{ $ustad->id }}" selected>{{ $ustad->name }}</option>
+              <option value="{{ $ustad->id }}" selected>{{$ustad->kitab->title}} oleh {{ $ustad->name}}</option>
               @else
-              <option value="{{ $ustad->id }}">{{ $ustad->name }}</option>
+              <option value="{{ $ustad->id }}">{{$ustad->kitab->title}} oleh {{ $ustad->name}}</option>
               @endif
               @endforeach
             </select>
           </div>
         @endcan
 
+        
 
         <div class="mb-3">
           <label for="santri" class="form-label">Nama Santri</label>

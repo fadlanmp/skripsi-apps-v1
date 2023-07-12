@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kitab;
 use App\Models\Ustad;
 use App\Models\Role;
 use App\Models\User;
@@ -37,6 +38,7 @@ class UstadController extends Controller
         return view('dashboard.ustads.create',[
             'roles' => Role::all(),
             'users' => User::all(),
+            'kitabs' => Kitab::all()
         ]);
     }
 
@@ -61,13 +63,14 @@ class UstadController extends Controller
         $validatedDataUstad = $request->validate([
             'name' => 'required|max:55',
             'jk' => 'required',
-            'no_kontak' => 'min:11|max:20|unique:ustads'
+            'no_kontak' => 'min:11|max:20|unique:ustads',
+            'kitab_id' => 'required|unique:ustads'
         ]);
         User::create($validatedDataUser);
         $validatedDataUstad['user_id'] = User::all()->pluck('id')->last();
         Ustad::create($validatedDataUstad);
 
-        return redirect('/dashboard/ustads')->with('success', 'New post has been added!');
+        return redirect('/dashboard/ustads')->with('success', 'User baru ustaz berhasil ditambahkan!');
         
     }
 
@@ -88,12 +91,14 @@ class UstadController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Ustad  $ustad
+     * @param  \App\Models\Kitab  $kitab
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ustad $ustad)
+    public function edit(Ustad $ustad, Kitab $kitab)
     {
         return view('dashboard.ustads.edit',[
-            'ustad' => $ustad
+            'ustad' => $ustad,
+            'kitabs' => Kitab::all()
         ]);
     }
 
@@ -113,6 +118,10 @@ class UstadController extends Controller
 
         if($request->no_kontak != $ustad->no_kontak){
             $rulesUstad['no_kontak'] = 'required|min:11|max:20|unique:ustads';
+        }
+
+        if($request->kitab != $ustad->kitab_id){
+            $rulesUstad['kitab_id'] = 'required|unique:ustads';
         }
 
         // if(auth()->user()->role_id == 1)
@@ -139,7 +148,7 @@ class UstadController extends Controller
         Ustad::where('id', $ustad->id)->update($validatedDataUstad);
         // User::where('id', $ustad->user_id) ->update($validatedDataUser);
 
-        return redirect('/dashboard/ustads')->with('success', 'Profil berhasi diupdate!');
+        return redirect('/dashboard/ustads')->with('success', 'Profil ustaz berhasi diperbaharui!');
     }
 
     /**
@@ -161,7 +170,7 @@ class UstadController extends Controller
         User::destroy($ustad->user_id);
         
 
-        return redirect('/dashboard/ustads')->with('success', 'Profil ustad dihapus!');
+        return redirect('/dashboard/ustads')->with('success', 'Profil ustaz berhasil dihapus!');
     }
 
     public function reset(Ustad $ustad)

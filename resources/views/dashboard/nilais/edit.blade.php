@@ -2,13 +2,13 @@
 
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Edit Nilai Santri</h1>
+    <h1 class="h2">Perbaharui Nilai Santri</h1>
 </div>
 <div class="col-md-8">
     <form method="post" action="/dashboard/nilais/{{ $nilai->id }}" class="mb-5">
       @method('put')  
       @csrf
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label for="rumpun" class="form-label">Rumpun</label>
         <select class="form-select" name="rumpun_id">
           @foreach ($rumpuns as $rumpun)
@@ -19,9 +19,39 @@
           @endif
           @endforeach
         </select>
-      </div>
+      </div> -->
 
-      <div class="mb-3">
+      @can('admin')
+          <div class="mb-3">
+            <label for="ustad" class="form-label">Pengajar</label>
+            <select class="form-select" name="ustad_id" id="ustad">
+              @foreach ($ustads as $ustad)
+              @if (old('ustad_id', $nilai->ustad_id) == $ustad->id)
+              <option value="{{ $ustad->id }}" selected>{{$ustad->kitab->title}} oleh {{ $ustad->name}}</option>
+              @else
+              <option value="{{ $ustad->id }}">{{$ustad->kitab->title}} oleh {{ $ustad->name}}</option>
+              @endif
+              @endforeach
+            </select>
+          </div>
+        @endcan
+
+        <!-- @can('admin')
+          <div class="mb-3">
+            <label for="ustad" class="form-label">Pengajar</label>
+            <select class="form-select" name="ustad_id">
+              @foreach ($ustads as $ustad)
+              @if (old('kitab_id', $nilai->ustad_id) == $ustad->id)
+              <option value="{{ $ustad->id }}" selected>{{ $ustad->name }}</option>
+              @else
+              <option value="{{ $ustad->id }}">{{ $ustad->name }}</option>
+              @endif
+              @endforeach
+            </select>
+          </div>
+        @endcan -->
+
+      <!-- <div class="mb-3">
         <label for="kitab" class="form-label">Nama Kitab</label>
         <select class="form-select" name="kitab_id">
           @foreach ($kitabs as $kitab)
@@ -32,22 +62,9 @@
           @endif
           @endforeach
         </select>
-      </div>
+      </div> -->
 
-      @can('admin')
-      <div class="mb-3">
-        <label for="ustad" class="form-label">Pengajar</label>
-        <select class="form-select" name="ustad_id">
-          @foreach ($ustads as $ustad)
-          @if (old('kitab_id', $nilai->ustad_id) == $ustad->id)
-          <option value="{{ $ustad->id }}" selected>{{ $ustad->name }}</option>
-          @else
-          <option value="{{ $ustad->id }}">{{ $ustad->name }}</option>
-          @endif
-          @endforeach
-        </select>
-      </div>
-        @endcan
+     
       
 
       <div class="mb-3">
@@ -73,7 +90,7 @@
         @enderror
       </div>
 
-        <button type="submit" class="btn btn-primary">Edit Nilai</button>
+        <button type="submit" class="btn btn-primary">Perbaharui Nilai</button>
       </form>
 </div>
 

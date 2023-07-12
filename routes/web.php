@@ -27,7 +27,7 @@ use App\Http\Controllers\ProfilController;
 
 Route::get('/', function () {
     return view('landingpage', [
-        "title" => "Landingpage",
+        "title" => "",
         "active" => 'home',
         "image" => "heroes.jpg"
     ]);
@@ -35,7 +35,7 @@ Route::get('/', function () {
 
 Route::get('/about', function () {
     return view('about', [
-        "title" => "About",
+        "title" => "Tentang",
         "active" => 'about',
         "nama" => "Manarul Hasan",
         "email" => "manaruhasankotabanjar@gmail.com",

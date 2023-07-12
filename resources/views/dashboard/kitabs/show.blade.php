@@ -8,11 +8,11 @@
 
             <a href="/dashboard/kitabs" class="btn btn-success mb-2"><span data-feather="arrow-left"></span> Kembali ke daftar kitab</a>
             @can('admin')
-            <a href="/dashboard/kitabs/{{ $kitabs->slug }}/edit" class="btn btn-warning mb-2"><span data-feather="edit"></span> Edit</a>
+            <a href="/dashboard/kitabs/{{ $kitabs->slug }}/edit" class="btn btn-warning mb-2"><span data-feather="edit"></span> Perbaharui Kitab</a>
             <form action="/dashboard/kitabs/{{ $kitabs->slug }}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
-                <button class="btn btn-danger mb-2" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span> Delete</button>
+                <button class="btn btn-danger mb-2" onclick="return confirm('Apakah anda yakin?')"><span data-feather="x-circle"></span> Hapus Kitab</button>
             </form>
             @endcan
 

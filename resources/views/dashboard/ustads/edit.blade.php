@@ -2,7 +2,7 @@
 
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Update Profil Ustad {{ $ustad->name }}</h1>
+    <h1 class="h2">Perbaharui Profil Ustaz {{ $ustad->name }}</h1>
 </div>
 <div class="col-md-8">
     <form method="post" action="/dashboard/ustads/{{ $ustad->id }}" class="mb-5">
@@ -43,6 +43,23 @@
         </div>
         @enderror
       </div>
+      <div class="mb-3">
+          <label for="kitab" class="form-label">Nama Kitab</label>
+          <select class="form-select @error('kitab_id') is-invalid @enderror" name="kitab_id">
+            @foreach ($kitabs as $kitab)
+            @if (old('kitab_id', $ustad->kitab_id) == $kitab->id)
+            <option value="{{ $kitab->id }}" selected>{{ $kitab->title }}</option>
+            @else
+            <option value="{{ $kitab->id }}">{{ $kitab->title }}</option>
+            @endif
+            @endforeach
+          </select>
+          @error('kitab_id')
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
+          @enderror
+        </div>
 
       {{-- <div class="mb-3">
         <label for="password" class="form-label">Password Lama</label>
@@ -63,7 +80,7 @@
         @enderror
       </div> --}}
 
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-primary">Perbaharui</button>
       </form>
 </div>
 

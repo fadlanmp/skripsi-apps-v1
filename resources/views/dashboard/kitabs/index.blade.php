@@ -23,7 +23,7 @@
           <th scope="col">Rumpun</th>
           <th scope="col">Nama Kitab</th>
           <th scope="col">Pengarang</th>
-          <th scope="col">Action</th>
+          <th scope="col">Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -40,7 +40,7 @@
               <form action="/dashboard/kitabs/{{ $kitab->slug }}" method="post" class="d-inline">
               @method('delete')
               @csrf
-              <button class="badge btn-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></button>
+              <button class="badge btn-danger border-0" onclick="return confirm('Apakah anda yakin?')"><span data-feather="x-circle"></span></button>
               </form>
             </td>
           @endcan

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('ustads', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('kitab_id');
             $table->string('name');
             $table->string('jk');
             $table->string('no_kontak');

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('nilais', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('rumpun_id');
+            // $table->foreignId('rumpun_id');
             $table->foreignId('santri_id');
             $table->foreignId('ustad_id');
             $table->foreignId('kitab_id');

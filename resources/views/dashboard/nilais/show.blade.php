@@ -7,11 +7,11 @@
             <h2 class="mb-5">Detail Nilai</h2>
             <a href="/dashboard/nilais" class="btn btn-success mb-2"><span data-feather="arrow-left"></span> Kembali ke daftar nilai</a>
             @canany(['admin', 'ustad'])
-            <a href="/dashboard/nilais/{{ $nilai->id }}/edit" class="btn btn-warning mb-2"><span data-feather="edit"></span> Edit</a>
+            <a href="/dashboard/nilais/{{ $nilai->id }}/edit" class="btn btn-warning mb-2"><span data-feather="edit"></span> Perbaharui Nilai</a>
             <form action="/dashboard/nilais/{{ $nilai->id }}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
-                <button class="btn btn-danger mb-2" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span> Delete</button>
+                <button class="btn btn-danger mb-2" onclick="return confirm('Apakah anda yakin?')"><span data-feather="x-circle"></span> Hapus Nilai</button>
             </form>
             @endcanany
 
@@ -31,11 +31,7 @@
                     <th scope="row">:</th>
                     <td>{{ $nilai->kitab->title }}</td>
                 </tr>
-                <tr>
-                    <th scope="row">Rumpun</th>
-                    <th scope="row">:</th>
-                    <td>{{ $nilai->rumpun->name }}</td>
-                </tr>
+                <!--  -->
                 <tr>
                     <th scope="row">Pengajar</th>
                     <th scope="row">:</th>

@@ -11,11 +11,11 @@
             {{-- <a href="/dashboard/password/{{ $santri->user_id }}" class="btn btn-info mb-2"><span data-feather="edit"></span> Edit Password</a> --}}
 
             @can('admin')
-            <a href="/dashboard/santris/{{ $santri->id }}/edit" class="btn btn-warning mb-2"><span data-feather="edit"></span> Edit</a>
+            <a href="/dashboard/santris/{{ $santri->id }}/edit" class="btn btn-warning mb-2"><span data-feather="edit"></span> Perbaharui Profil</a>
             <form action="/dashboard/santris/{{ $santri->id }}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
-                <button class="btn btn-danger mb-2" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span> Delete</button>
+                <button class="btn btn-danger mb-2" onclick="return confirm('Apakah anda yakin?')"><span data-feather="x-circle"></span> Hapus Profil Santri</button>
             </form>
                 
             @endcan

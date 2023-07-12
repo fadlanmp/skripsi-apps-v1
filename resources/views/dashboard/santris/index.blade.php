@@ -23,7 +23,7 @@
           <th scope="col">No Induk Santri</th>
           <th scope="col">Nama</th>
           <th scope="col">Jenis Kelamin</th>
-          <th scope="col">Action</th>
+          <th scope="col">Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -44,7 +44,7 @@
               <form action="/dashboard/santris/{{ $santri->id }}" method="post" class="d-inline">
               @method('delete')
               @csrf
-              <button class="badge btn-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="trash-2"></span></button>
+              <button class="badge btn-danger border-0" onclick="return confirm('Apakah anda yakin?')"><span data-feather="trash-2"></span></button>
               </form>
             @endcan
           </td>
